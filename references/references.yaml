@@ -105,3 +105,96 @@ references:
     url: https://git-scm.com/docs/gitignore
     accessed: 2026-10-25
     note: Pattern syntax used in .gitignore.
+
+  - id: PY-URLLIB-REQUEST
+    author: Python Software Foundation
+    title: urllib.request — Extensible library for opening URLs
+    publisher: Python 3 Documentation
+    url: https://docs.python.org/3/library/urllib.request.html
+    accessed: 2026-10-25
+
+  - id: PY-URLLIB-PARSE
+    author: Python Software Foundation
+    title: urllib.parse — Parse URLs into components
+    publisher: Python 3 Documentation
+    url: https://docs.python.org/3/library/urllib.parse.html
+    accessed: 2026-10-25
+
+  - id: PY-HASHLIB
+    author: Python Software Foundation
+    title: hashlib — Secure hashes and message digests
+    publisher: Python 3 Documentation
+    url: https://docs.python.org/3/library/hashlib.html
+    accessed: 2026-10-25
+
+  - id: PY-JSON
+    author: Python Software Foundation
+    title: json — JSON encoder and decoder
+    publisher: Python 3 Documentation
+    url: https://docs.python.org/3/library/json.html
+    accessed: 2026-10-25
+
+  - id: PY-DATACLASSES
+    author: Python Software Foundation
+    title: dataclasses — Data Classes
+    publisher: Python 3 Documentation
+    url: https://docs.python.org/3/library/dataclasses.html
+    accessed: 2026-10-25
+
+  - id: PY-CSV
+    author: Python Software Foundation
+    title: csv — CSV File Reading and Writing
+    publisher: Python 3 Documentation
+    url: https://docs.python.org/3/library/csv.html
+    accessed: 2026-10-25
+
+  - id: PY-TIME
+    author: Python Software Foundation
+    title: time — Time access and conversions
+    publisher: Python 3 Documentation
+    url: https://docs.python.org/3/library/time.html
+    accessed: 2026-10-25
+
+  - id: PY-COLLECTIONS
+    author: Python Software Foundation
+    title: collections — Container datatypes
+    publisher: Python 3 Documentation
+    url: https://docs.python.org/3/library/collections.html
+    accessed: 2026-10-25
+
+  - id: PY-HTML-PARSER
+    author: Python Software Foundation
+    title: html.parser — Simple HTML and XHTML parser
+    publisher: Python 3 Documentation
+    url: https://docs.python.org/3/library/html.parser.html
+    accessed: 2026-10-25
+
+  - id: PYTEST-DOCS
+    author: pytest-dev
+    title: pytest documentation
+    publisher: docs.pytest.org
+    url: https://docs.pytest.org/en/stable/
+    accessed: 2026-10-25
+
+  - id: UV-DOCS
+    author: Astral
+    title: uv documentation
+    publisher: docs.astral.sh
+    url: https://docs.astral.sh/uv/
+    accessed: 2026-10-25
+    note: Python project and dependency management for ingest/.
+
+  - id: RFC-3986
+    author: T. Berners-Lee, R. Fielding, L. Masinter
+    title: "RFC 3986: Uniform Resource Identifier (URI): Generic Syntax"
+    publisher: IETF
+    url: https://datatracker.ietf.org/doc/html/rfc3986
+    accessed: 2026-10-25
+    note: Case-insensitivity of scheme/host and default-port normalization (§6.2.2–6.2.3).
+
+  - id: PY-DATETIME
+    author: Python Software Foundation
+    title: datetime — Basic date and time types
+    publisher: Python 3 Documentation
+    url: https://docs.python.org/3/library/datetime.html
+    accessed: 2026-10-25

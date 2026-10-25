@@ -23,7 +23,7 @@ Google. *Google Python Style Guide*. Google. <https://google.github.io/styleguid
 Internet Archive. *Wayback CDX Server API*. GitHub (internetarchive/wayback). <https://github.com/internetarchive/wayback/tree/master/wayback-cdx-server> (accessed 2026-10-25).
 
 - **Used for:** Query parameters (url, matchType, filter, collapse, fl, output, limit) for enumerating captures.
-- **Cited in:** `README.md`, `plan/PLAN.md`, `tools/build_bibliography.py`
+- **Cited in:** `README.md`, `ingest/capsteps_ingest/__init__.py`, `ingest/capsteps_ingest/cdx.py`, `ingest/capsteps_ingest/pages.py`, `ingest/capsteps_ingest/survey.py`, `ingest/tests/test_cdx.py`, `plan/PLAN.md`, `reports/legacy_only_songs.md`, `reports/phase1_findings.md`, `reports/phase1_listing_pages.md`, `reports/phase1_survey.md`, `tools/build_bibliography.py`
 
 ### [MS-TSDOC]
 
@@ -36,7 +36,49 @@ Microsoft. *TSDoc*. tsdoc.org. <https://tsdoc.org/> (accessed 2026-10-25).
 
 Python Software Foundation. *argparse — Parser for command-line options, arguments and subcommands*. Python 3 Documentation. <https://docs.python.org/3/library/argparse.html> (accessed 2026-10-25).
 
-- **Cited in:** `tools/build_bibliography.py`
+- **Cited in:** `ingest/capsteps_ingest/pages.py`, `ingest/capsteps_ingest/survey.py`, `tools/build_bibliography.py`
+
+### [PY-COLLECTIONS]
+
+Python Software Foundation. *collections — Container datatypes*. Python 3 Documentation. <https://docs.python.org/3/library/collections.html> (accessed 2026-10-25).
+
+- **Cited in:** `ingest/capsteps_ingest/survey.py`
+
+### [PY-CSV]
+
+Python Software Foundation. *csv — CSV File Reading and Writing*. Python 3 Documentation. <https://docs.python.org/3/library/csv.html> (accessed 2026-10-25).
+
+- **Cited in:** `ingest/capsteps_ingest/pages.py`, `ingest/capsteps_ingest/survey.py`
+
+### [PY-DATACLASSES]
+
+Python Software Foundation. *dataclasses — Data Classes*. Python 3 Documentation. <https://docs.python.org/3/library/dataclasses.html> (accessed 2026-10-25).
+
+- **Cited in:** `ingest/capsteps_ingest/pages.py`, `ingest/capsteps_ingest/survey.py`, `ingest/capsteps_ingest/urls.py`
+
+### [PY-DATETIME]
+
+Python Software Foundation. *datetime — Basic date and time types*. Python 3 Documentation. <https://docs.python.org/3/library/datetime.html> (accessed 2026-10-25).
+
+- **Cited in:** `ingest/capsteps_ingest/pages.py`, `ingest/capsteps_ingest/survey.py`
+
+### [PY-HASHLIB]
+
+Python Software Foundation. *hashlib — Secure hashes and message digests*. Python 3 Documentation. <https://docs.python.org/3/library/hashlib.html> (accessed 2026-10-25).
+
+- **Cited in:** `ingest/capsteps_ingest/cdx.py`
+
+### [PY-HTML-PARSER]
+
+Python Software Foundation. *html.parser — Simple HTML and XHTML parser*. Python 3 Documentation. <https://docs.python.org/3/library/html.parser.html> (accessed 2026-10-25).
+
+- **Cited in:** `ingest/capsteps_ingest/pages.py`, `ingest/tests/test_pages.py`
+
+### [PY-JSON]
+
+Python Software Foundation. *json — JSON encoder and decoder*. Python 3 Documentation. <https://docs.python.org/3/library/json.html> (accessed 2026-10-25).
+
+- **Cited in:** `ingest/capsteps_ingest/cdx.py`
 
 ### [PY-OS-WALK]
 
@@ -48,13 +90,37 @@ Python Software Foundation. *os.walk — Miscellaneous operating system interfac
 
 Python Software Foundation. *pathlib — Object-oriented filesystem paths*. Python 3 Documentation. <https://docs.python.org/3/library/pathlib.html> (accessed 2026-10-25).
 
-- **Cited in:** `tools/build_bibliography.py`
+- **Cited in:** `ingest/capsteps_ingest/urls.py`, `tools/build_bibliography.py`
 
 ### [PY-RE]
 
 Python Software Foundation. *re — Regular expression operations*. Python 3 Documentation. <https://docs.python.org/3/library/re.html> (accessed 2026-10-25).
 
-- **Cited in:** `tools/build_bibliography.py`
+- **Cited in:** `ingest/capsteps_ingest/pages.py`, `ingest/capsteps_ingest/survey.py`, `tools/build_bibliography.py`
+
+### [PY-TIME]
+
+Python Software Foundation. *time — Time access and conversions*. Python 3 Documentation. <https://docs.python.org/3/library/time.html> (accessed 2026-10-25).
+
+- **Cited in:** `ingest/capsteps_ingest/cdx.py`
+
+### [PY-URLLIB-PARSE]
+
+Python Software Foundation. *urllib.parse — Parse URLs into components*. Python 3 Documentation. <https://docs.python.org/3/library/urllib.parse.html> (accessed 2026-10-25).
+
+- **Cited in:** `ingest/capsteps_ingest/cdx.py`, `ingest/capsteps_ingest/pages.py`, `ingest/capsteps_ingest/survey.py`, `ingest/capsteps_ingest/urls.py`
+
+### [PY-URLLIB-REQUEST]
+
+Python Software Foundation. *urllib.request — Extensible library for opening URLs*. Python 3 Documentation. <https://docs.python.org/3/library/urllib.request.html> (accessed 2026-10-25).
+
+- **Cited in:** `ingest/capsteps_ingest/cdx.py`
+
+### [PYTEST-DOCS]
+
+pytest-dev. *pytest documentation*. docs.pytest.org. <https://docs.pytest.org/en/stable/> (accessed 2026-10-25).
+
+- **Cited in:** `ingest/tests/test_cdx.py`, `ingest/tests/test_pages.py`, `ingest/tests/test_survey.py`, `ingest/tests/test_urls.py`
 
 ### [PYYAML-DOCS]
 
@@ -63,19 +129,33 @@ Kirill Simonov and the PyYAML contributors. *PyYAML Documentation*. pyyaml.org. 
 - **Used for:** yaml.safe_load for reading references.yaml.
 - **Cited in:** `tools/build_bibliography.py`
 
+### [RFC-3986]
+
+T. Berners-Lee, R. Fielding, L. Masinter. *RFC 3986: Uniform Resource Identifier (URI): Generic Syntax*. IETF. <https://datatracker.ietf.org/doc/html/rfc3986> (accessed 2026-10-25).
+
+- **Used for:** Case-insensitivity of scheme/host and default-port normalization (§6.2.2–6.2.3).
+- **Cited in:** `ingest/capsteps_ingest/urls.py`, `ingest/tests/test_urls.py`
+
+### [UV-DOCS]
+
+Astral. *uv documentation*. docs.astral.sh. <https://docs.astral.sh/uv/> (accessed 2026-10-25).
+
+- **Used for:** Python project and dependency management for ingest/.
+- **Cited in:** `ingest/pyproject.toml`
+
 ### [WAYBACK-CAPSTEPS-SONGS]
 
 Internet Archive. *Wayback Machine captures of https://www.capsteps.com/songs/*. Internet Archive Wayback Machine. <https://web.archive.org/web/20260000000000*/https://www.capsteps.com/songs/> (accessed 2026-10-25).
 
 - **Used for:** Archived Capitol Steps song listing pages; primary source for song titles and descriptions.
-- **Cited in:** `README.md`
+- **Cited in:** `README.md`, `ingest/capsteps_ingest/survey.py`, `ingest/capsteps_ingest/urls.py`, `reports/phase1_survey.md`
 
 ### [WAYBACK-CAPSTEPS-SOUNDS]
 
 Internet Archive. *CDX index of archived audio files on capsteps.com*. Internet Archive Wayback Machine. <https://web.archive.org/cdx/search/cdx?url=capsteps.com&matchType=domain&filter=mimetype:audio.*> (accessed 2026-10-25).
 
 - **Used for:** Probe showing the audio lives under /sounds/ in .mp3/.au/.ra/.ram formats (plan §2).
-- **Cited in:** `plan/PLAN.md`
+- **Cited in:** `ingest/capsteps_ingest/pages.py`, `ingest/capsteps_ingest/survey.py`, `ingest/tests/test_urls.py`, `plan/PLAN.md`, `reports/legacy_only_songs.md`, `reports/phase1_findings.md`, `reports/phase1_listing_pages.md`, `reports/phase1_survey.md`
 
 ### [WIKI-CAPSTEPS]
 

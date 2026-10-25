@@ -39,7 +39,7 @@ ID_PATTERN = re.compile(r"^[A-Z][A-Z0-9]+(?:-[A-Z0-9]+)+$")
 CITATION_PATTERN = re.compile(r"\[([A-Z][A-Z0-9]+(?:-[A-Z0-9]+)+)\]")
 
 SKIP_DIRS = {".git", "node_modules", "dist", ".venv", "__pycache__", "cache"}
-SCAN_SUFFIXES = {".py", ".ts", ".tsx", ".js", ".md", ".yaml", ".yml", ".html", ".css"}
+SCAN_SUFFIXES = {".py", ".ts", ".tsx", ".js", ".md", ".yaml", ".yml", ".toml", ".html", ".css"}
 SCAN_NAMES = {".gitignore"}
 SKIP_FILES = {BIBLIOGRAPHY_FILE, REFERENCES_FILE}
 

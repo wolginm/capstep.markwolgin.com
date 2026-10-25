@@ -1,6 +1,6 @@
 # Capitol Steps Preservation Site — Project Plan
 
-**Status:** Phase 0 COMPLETE (2026-10-25). Awaiting go-ahead for Phase 1.
+**Status:** Phase 1 COMPLETE (2026-10-25); see `reports/phase1_findings.md`. Awaiting Phase 2 decisions and go-ahead.
 **Author:** Claude (agent), for wolginm
 **Date:** 2026-10-25 (revised 2026-10-25)
 
@@ -137,6 +137,21 @@ continue.
 - **About:** who the Capitol Steps were (cited), what this site is and isn't.
 - **Copyright & takedown page:** see §6.
 - **Bibliography page:** rendered from `references.yaml`.
+- **Site footer (every page):** must state that the site was developed primarily
+  with an LLM, with a human making the decisions. Draft wording: *"Built primarily
+  with an AI model (LLM); a human developer drove every decision."* It links to the
+  AI Disclosure page. *(Developer requirement, 2026-10-25.)*
+- **AI Disclosure page:** documents which LLM was used and how:
+  - model and tool: Claude Opus 5.5 (`claude-opus-5-5`), by Anthropic, run through
+    the Claude Code CLI
+  - the workflow: the human approves a written plan and each phase, the agent writes
+    code, docs, and data, and the human reviews and commits
+  - what the LLM did (code, pipeline, docs, metadata extraction) and what the human
+    decided (stack, scope, copyright policy, formats, variants)
+  - per-phase log, sourced from `docs/AI_USAGE.md`. That file is updated at the end
+    of every phase from now on.
+  - limitations: LLM output can be wrong; every metadata field carries a source
+    citation so readers can verify it.
 - Accessibility basics: keyboard navigation, labelled audio controls, contrast.
 - Tests: Vitest for components and utilities, plus a small Playwright smoke test.
 
@@ -207,6 +222,7 @@ and where it's used.
 capitol_steps/
   CLAUDE.md
   plan/PLAN.md
+  docs/AI_USAGE.md        # running log of LLM use; feeds the AI Disclosure page
   BIBLIOGRAPHY.md
   references/references.yaml
   ingest/                 # Python 3.12, uv or venv

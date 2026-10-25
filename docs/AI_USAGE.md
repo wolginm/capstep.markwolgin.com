@@ -1,0 +1,59 @@
+# AI Usage Log
+
+This site was developed **primarily with a large language model (LLM)**, with a
+**human developer driving every decision**. This log records which model was used
+and how. It is the source for the site's AI Disclosure page (plan §5, Phase 3) and
+is updated at the end of every phase.
+
+## Model and tooling
+
+| | |
+|---|---|
+| Model | Claude Opus 5.5 (`claude-opus-5-5`) |
+| Vendor | Anthropic |
+| Interface | Claude Code (Anthropic's command-line coding agent), run in the developer's local terminal |
+| Agent permissions | Read/write within the project directory and shell commands. Every phase starts only with the developer's explicit approval (see `CLAUDE.md`) |
+
+## How the work is divided
+
+**The human developer decides:**
+- project goals and scope (`CLAUDE.md`)
+- technology stack and hosting (React + TypeScript static site; GitHub Pages or self-hosted)
+- content policy: link-only (no re-hosting of audio), `.mp3` only, legacy formats
+  (`.au`/`.ra`/`.ram`) skipped and listed for review, each variant is its own song
+- the copyright/takedown contact and wording
+- the requirement to disclose LLM use (this log, the site footer, and the disclosure page)
+- approval of every phase and of every commit
+
+**The LLM (Claude) does:**
+- drafts and revises the plan (`plan/PLAN.md`) for the human to review
+- writes the code (Python ingestion pipeline, tooling, and later the website), tests, and docs
+- queries the Internet Archive and summarizes the findings in reports
+- keeps the citation registry (`references/references.yaml`) and bibliography up to date
+- reports results, including failures and open questions, back to the human
+
+**Verification:** LLM output can be wrong. Every source is cited by ID and listed in
+`BIBLIOGRAPHY.md`, and data fields will carry source citations so readers can check them.
+Automated tests cover the pipeline logic.
+
+## Phase log
+
+### Phase 0 — Scaffolding (2026-10-25)
+- **Human:** wrote `CLAUDE.md`; reviewed the draft plan; resolved six open decisions
+  (stack, hosting, enrichment timing, legacy formats, takedown contact, variants);
+  approved Phase 0 and the commit.
+- **LLM:** probed the Wayback CDX API to ground the plan, drafted `plan/PLAN.md`, and
+  created the repo layout, `.gitignore`, `README.md`, the citation registry, and
+  `tools/build_bibliography.py`. Found and fixed a false-positive bug in its own
+  citation scanner during testing.
+
+### Phase 1 — Discovery survey (2026-10-25)
+- **Human:** approved Phase 1; added the requirement for the LLM-disclosure footer
+  and this AI Disclosure page.
+- **LLM:** wrote the CDX client (`ingest/capsteps_ingest/cdx.py`: throttling, retries,
+  resume-key paging, disk cache), URL normalization (`urls.py`), the survey
+  (`survey.py`), and unit tests. Ran the survey and produced the reports in `reports/`.
+  Found that `capsteps.com/songs/` has **no** captures in the CDX index; the audio
+  lives under `/sounds/` and was linked from the homepage. Added a listing-page sampler
+  (`pages.py`), and wrote `reports/phase1_findings.md` with recommendations for Phase 2.
+  Found and fixed its own bug (zero-byte captures mistaken for outages) mid-run; 32 tests pass.
