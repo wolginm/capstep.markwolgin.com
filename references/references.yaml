@@ -1,0 +1,107 @@
+# Single source of truth for every source this project cites.
+#
+# Cite an entry anywhere in the repo (docstrings, TSDoc, Markdown) by writing its
+# ID in square brackets, e.g. [IA-CDX-API]. BIBLIOGRAPHY.md is generated from this
+# file by `python3 tools/build_bibliography.py`; do not edit BIBLIOGRAPHY.md by hand.
+#
+# Fields:
+#   id         (required) UPPER-KEBAB-CASE with at least one hyphen, unique
+#   title      (required)
+#   url        (required)
+#   accessed   (required) YYYY-MM-DD, date the source was last consulted
+#   author     (optional) person or organization
+#   publisher  (optional) site or publisher name
+#   note       (optional) what the source is used for in this project
+
+references:
+  - id: WIKI-CAPSTEPS
+    author: Wikipedia contributors
+    title: Capitol Steps
+    publisher: Wikipedia, The Free Encyclopedia
+    url: https://en.wikipedia.org/wiki/Capitol_Steps
+    accessed: 2026-10-25
+    note: Background on the troupe (history, albums, 2021 shutdown) quoted in CLAUDE.md and the README.
+
+  - id: WAYBACK-CAPSTEPS-SONGS
+    author: Internet Archive
+    title: Wayback Machine captures of https://www.capsteps.com/songs/
+    publisher: Internet Archive Wayback Machine
+    url: https://web.archive.org/web/20260000000000*/https://www.capsteps.com/songs/
+    accessed: 2026-10-25
+    note: Archived Capitol Steps song listing pages; primary source for song titles and descriptions.
+
+  - id: WAYBACK-CAPSTEPS-SOUNDS
+    author: Internet Archive
+    title: CDX index of archived audio files on capsteps.com
+    publisher: Internet Archive Wayback Machine
+    url: https://web.archive.org/cdx/search/cdx?url=capsteps.com&matchType=domain&filter=mimetype:audio.*
+    accessed: 2026-10-25
+    note: Probe showing the audio lives under /sounds/ in .mp3/.au/.ra/.ram formats (plan §2).
+
+  - id: IA-CDX-API
+    author: Internet Archive
+    title: Wayback CDX Server API
+    publisher: GitHub (internetarchive/wayback)
+    url: https://github.com/internetarchive/wayback/tree/master/wayback-cdx-server
+    accessed: 2026-10-25
+    note: Query parameters (url, matchType, filter, collapse, fl, output, limit) for enumerating captures.
+
+  - id: GOOGLE-PYGUIDE
+    author: Google
+    title: Google Python Style Guide
+    publisher: Google
+    url: https://google.github.io/styleguide/pyguide.html
+    accessed: 2026-10-25
+    note: Docstring layout (Args/Returns/Raises sections); this project adds a References section.
+
+  - id: MS-TSDOC
+    author: Microsoft
+    title: TSDoc
+    publisher: tsdoc.org
+    url: https://tsdoc.org/
+    accessed: 2026-10-25
+    note: Comment convention for TypeScript code in web/.
+
+  - id: PYYAML-DOCS
+    author: Kirill Simonov and the PyYAML contributors
+    title: PyYAML Documentation
+    publisher: pyyaml.org
+    url: https://pyyaml.org/wiki/PyYAMLDocumentation
+    accessed: 2026-10-25
+    note: yaml.safe_load for reading references.yaml.
+
+  - id: PY-ARGPARSE
+    author: Python Software Foundation
+    title: argparse — Parser for command-line options, arguments and subcommands
+    publisher: Python 3 Documentation
+    url: https://docs.python.org/3/library/argparse.html
+    accessed: 2026-10-25
+
+  - id: PY-RE
+    author: Python Software Foundation
+    title: re — Regular expression operations
+    publisher: Python 3 Documentation
+    url: https://docs.python.org/3/library/re.html
+    accessed: 2026-10-25
+
+  - id: PY-PATHLIB
+    author: Python Software Foundation
+    title: pathlib — Object-oriented filesystem paths
+    publisher: Python 3 Documentation
+    url: https://docs.python.org/3/library/pathlib.html
+    accessed: 2026-10-25
+
+  - id: PY-OS-WALK
+    author: Python Software Foundation
+    title: os.walk — Miscellaneous operating system interfaces
+    publisher: Python 3 Documentation
+    url: https://docs.python.org/3/library/os.html#os.walk
+    accessed: 2026-10-25
+
+  - id: GIT-GITIGNORE
+    author: Git project
+    title: gitignore — Specifies intentionally untracked files to ignore
+    publisher: git-scm.com
+    url: https://git-scm.com/docs/gitignore
+    accessed: 2026-10-25
+    note: Pattern syntax used in .gitignore.

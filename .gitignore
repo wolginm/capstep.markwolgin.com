@@ -1,0 +1,23 @@
+# Pattern syntax: [GIT-GITIGNORE] https://git-scm.com/docs/gitignore
+
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+.pytest_cache/
+.ruff_cache/
+.mypy_cache/
+
+# Raw Wayback responses cached by the ingestion pipeline (re-creatable)
+ingest/cache/
+
+# Node / web build
+node_modules/
+web/dist/
+*.tsbuildinfo
+
+# Editors / OS
+.vscode/
+.idea/
+.DS_Store
+*.swp
