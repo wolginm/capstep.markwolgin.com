@@ -57,3 +57,24 @@ Automated tests cover the pipeline logic.
   lives under `/sounds/` and was linked from the homepage. Added a listing-page sampler
   (`pages.py`), and wrote `reports/phase1_findings.md` with recommendations for Phase 2.
   Found and fixed its own bug (zero-byte captures mistaken for outages) mid-run; 32 tests pass.
+
+### Phase 2 — Ingestion pipeline (2026-10-25)
+- **Human:** approved all five Phase 1 recommendations (full homepage harvest, other
+  pages, file-name fallback titles, unarchived-songs report, album text as data) and
+  the Phase 1 commit.
+- **LLM:** wrote the harvester (`harvest.py`, ~1,400 archived pages fetched politely and
+  cached), the era-aware extractor (`extract.py`: titles, parodied song, album, week,
+  description, copyright notice), and the offline catalog builder (`build_catalog.py`:
+  `data/catalog.json`, SQLite, review reports). While checking output against real
+  pages it found and fixed several of its own extraction errors: real titles containing
+  "Here" rejected as format labels, an over-long copyright match, drop-cap repair joining
+  "A town", and prose links taken as titles. Each fix has a regression test.
+- **Human:** paused the work overnight (the LLM left a resume bookmark) and approved resuming.
+- **LLM:** finished the harvest (1,381 pages, 0 missing; one run was stopped by the tool when the
+  machine ran low on memory and resumed from cache). Reviewed the full catalog and spot-checked
+  random entries against their archived pages, then fixed further errors of its own: format
+  labels ("RA Streaming", "(MP3)") and prose links ("the Bush tax cut rates") taken as titles,
+  site navigation leaking into descriptions, blurbs starting mid-sentence, untidy and
+  inconsistent album names, and site prompts ("Read more Lirty Dies") taken as parodied songs.
+  Found a citable description of the Wayback `id_` URL flag. 65 tests pass. Result: 686
+  playable songs, 95% with titles from the archive.

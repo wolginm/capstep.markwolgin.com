@@ -1,6 +1,6 @@
 # Capitol Steps Preservation Site — Project Plan
 
-**Status:** Phase 1 COMPLETE (2026-10-25); see `reports/phase1_findings.md`. Awaiting Phase 2 decisions and go-ahead.
+**Status:** Phase 2 COMPLETE (2026-10-25), pending the developer's commit approval. Phase 3 awaits approval.
 **Author:** Claude (agent), for wolginm
 **Date:** 2026-10-25 (revised 2026-10-25)
 
@@ -128,6 +128,33 @@ continue.
 5. `build_catalog.py`: emit `catalog.json` (consumed by the site),
    `catalog.sqlite` (for ad-hoc queries), and `reports/legacy_only_songs.md`.
 6. Unit tests with recorded fixtures, so tests never hit the live archive.
+
+#### Phase 2 implementation notes (2026-10-25)
+- All five Phase 1 recommendations approved by the developer: full homepage harvest,
+  latest capture of other pages, file-name fallback titles (flagged), unarchived-songs
+  review report, album text stored as data.
+- **The parodied song comes from the archive.** The site itself printed it in brackets
+  (`[ Old Man River ]`), so `original_song` is filled in Phase 2. MusicBrainz songwriter
+  credits stay in v2.
+- New `kind` field (`song`, `lirty-dies`, `radio-show`, `promo`, `interview`), because the
+  archive's audio includes radio promos and interviews. The site can filter on it.
+- Descriptions are stored only as **excerpts of 300 characters or less** (whole sentences),
+  per §6 "quote briefly".
+- **Copyright notice:** stored verbatim from the archived footer of the capture where the song
+  appeared. Holders were Strauss & Newport, later Strauss, Newport & Eaton, later Newport &
+  Eaton. The footer also says *"These audio files are provided for individual listening only.
+  Do not redistribute."* The site must show this verbatim and keep the link-only model
+  (never copy files).
+- `data/catalog.sqlite` is gitignored (regenerable binary); `data/catalog.json` is tracked.
+- **Result:** 1,381 archived pages harvested (0 missing), 1,499 captures analysed. The catalog has
+  686 playable songs: 95% with archive titles (35 file-name titles, flagged), 77% with the parodied
+  song, 50% with an album (45 albums, one archive-wide spelling and year each), 87% with a featured
+  week, 94% with a description, and 100% with a copyright notice. 72 legacy-only and 94 unarchived
+  songs are listed in `reports/`. Details: `reports/phase2_extraction.md`.
+- Album names and years are normalized archive-wide; obvious variants (case, "&"/"and", leading
+  "The") are merged, but differently worded names are kept as printed.
+- Phase 3 note: `[IA-WAYBACK-URL]` recommends the `if_` flag (not `id_`) for toolbar-free links to
+  archived *pages*; audio keeps using `id_` (raw bytes).
 
 ### Phase 3 — Website (React + TypeScript, Vite)
 - **Home / browse:** searchable, sortable table or grid. Filters: year

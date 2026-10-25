@@ -165,6 +165,7 @@ class CdxClient:
         page_size: int = 5000,
         sleep: Callable[[float], None] = time.sleep,
         log: Callable[[str], None] = lambda msg: print(msg, file=sys.stderr),
+        offline: bool = False,
     ) -> None:
         """Create a client.
 
@@ -177,6 +178,8 @@ class CdxClient:
             page_size: ``limit`` per request when paging with resume keys.
             sleep: Sleep function (injectable for tests).
             log: Progress logger.
+            offline: If true, never touch the network; uncached requests raise
+                :class:`CdxUnavailable`.
 
         References:
             None (constructor; behaviour documented on the class).
@@ -192,6 +195,7 @@ class CdxClient:
         self.log = log
         self._last_request = 0.0
         self.live_requests = 0
+        self.offline = offline
 
     def _cache_path(self, url: str) -> Path:
         """Return the cache file path for a request URL.
@@ -220,12 +224,15 @@ class CdxClient:
 
         References:
             [PY-TIME] time.monotonic, https://docs.python.org/3/library/time.html
+            [PY-PATHLIB] Path.replace (atomic rename), https://docs.python.org/3/library/pathlib.html
             [PY-URLLIB-REQUEST] urllib.error.HTTPError / URLError,
                 https://docs.python.org/3/library/urllib.request.html
         """
         cache_file = self._cache_path(url)
         if cache_file.exists():
             return cache_file.read_text(encoding="utf-8")
+        if self.offline:
+            raise CdxUnavailable(f"not cached (offline mode): {url}")
 
         delay = self.backoff_base
         last_error: Exception | None = None
@@ -256,17 +263,21 @@ class CdxClient:
                 self._sleep(delay)
                 delay *= 2
                 continue
-            cache_file.write_text(body, encoding="utf-8")
+            # Write-then-rename so an interrupted run never leaves a partial cache file.
+            tmp = cache_file.with_suffix(".tmp")
+            tmp.write_text(body, encoding="utf-8")
+            tmp.replace(cache_file)
             return body
         raise CdxUnavailable(f"CDX request failed after retries: {url}") from last_error
 
-    def query(self, **params: str) -> Iterator[CdxRow]:
+    def query(self, **params: str | list[str]) -> Iterator[CdxRow]:
         """Yield every row for a CDX query, following resume keys.
 
         Args:
             **params: CDX query parameters (``url``, ``matchType``, ``filter``,
-                ``collapse``, ...). ``output``, ``limit`` and ``showResumeKey``
-                are set by this method.
+                ``collapse``, ...). A list value repeats the parameter (e.g. several
+                ``filter`` clauses, which the API ANDs). ``output``, ``limit`` and
+                ``showResumeKey`` are set by this method.
 
         Yields:
             :class:`CdxRow` objects in index order.
@@ -274,7 +285,8 @@ class CdxClient:
         References:
             [IA-CDX-API] Pagination via showResumeKey/resumeKey,
                 https://github.com/internetarchive/wayback/tree/master/wayback-cdx-server
-            [PY-URLLIB-PARSE] urlencode, https://docs.python.org/3/library/urllib.parse.html
+            [PY-URLLIB-PARSE] urlencode(doseq=True),
+                https://docs.python.org/3/library/urllib.parse.html
         """
         base = {**params, "output": "json", "limit": str(self.page_size), "showResumeKey": "true"}
         resume_key: str | None = None
@@ -283,7 +295,7 @@ class CdxClient:
             request_params = dict(base)
             if resume_key:
                 request_params["resumeKey"] = resume_key
-            url = f"{CDX_ENDPOINT}?{urlencode(request_params)}"
+            url = f"{CDX_ENDPOINT}?{urlencode(request_params, doseq=True)}"
             rows, resume_key = parse_json_page(self.get(url))
             page += 1
             self.log(f"  page {page}: {len(rows)} rows" + (" (more)" if resume_key else ""))

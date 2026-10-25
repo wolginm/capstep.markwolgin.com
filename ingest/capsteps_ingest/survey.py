@@ -6,7 +6,6 @@ inventory of every archived URL, then writes review reports:
 - ``reports/phase1_survey.md``           headline numbers and findings
 - ``reports/phase1_audio_inventory.csv`` one row per song (file slug)
 - ``reports/phase1_candidate_pages.csv`` archived HTML pages that may list songs
-- ``reports/legacy_only_songs.md``       songs with no playable .mp3 capture
 
 Usage:
     uv run python -m capsteps_ingest.survey [--repo-root PATH]
@@ -251,7 +250,7 @@ def write_inventory_csv(songs: dict[str, SongSurvey], path: Path) -> None:
         [PY-CSV] csv.writer, https://docs.python.org/3/library/csv.html
     """
     with path.open("w", newline="", encoding="utf-8") as handle:
-        writer = csv.writer(handle)
+        writer = csv.writer(handle, lineterminator="\n")
         writer.writerow([
             "slug", "formats", "directories", "has_playable_mp3", "mp3_good_captures",
             "best_mp3_timestamp", "best_mp3_original", "first_seen", "last_seen", "total_captures",
@@ -273,58 +272,11 @@ def write_candidate_pages_csv(pages: list[CdxRow], path: Path) -> None:
         [PY-CSV] csv.writer, https://docs.python.org/3/library/csv.html
     """
     with path.open("w", newline="", encoding="utf-8") as handle:
-        writer = csv.writer(handle)
+        writer = csv.writer(handle, lineterminator="\n")
         writer.writerow(["canonical_url", "first_capture", "status", "wayback_url"])
         for r in pages:
             writer.writerow([canonical_url(r.original), r.timestamp, r.statuscode,
                              wayback_view_url(r.timestamp, r.original)])
-
-
-def write_legacy_report(songs: dict[str, SongSurvey], path: Path) -> list[SongSurvey]:
-    """Write the developer-review list of songs with no playable .mp3.
-
-    Args:
-        songs: Grouped songs.
-        path: Output Markdown path.
-
-    Returns:
-        The legacy-only songs, sorted by slug.
-
-    References:
-        [WAYBACK-CAPSTEPS-SOUNDS] capture source,
-            https://web.archive.org/cdx/search/cdx?url=capsteps.com&matchType=domain&filter=mimetype:audio.*
-    """
-    legacy = sorted(
-        (s for s in songs.values() if s.best_mp3 is None and s.legacy_captures),
-        key=lambda s: s.slug,
-    )
-    lines = [
-        "# Songs available only in legacy formats",
-        "",
-        f"_Generated {date.today().isoformat()} by `ingest/capsteps_ingest/survey.py`. "
-        "Source: Wayback CDX index [WAYBACK-CAPSTEPS-SOUNDS] via [IA-CDX-API]._",
-        "",
-        "Per the developer's decision (plan §9.4), legacy formats (`.au`, `.ra`, `.ram`, ...) are "
-        "**not** shown on the site. These songs have no usable `.mp3` capture and are listed "
-        "here for review.",
-        "",
-        f"**{len(legacy)} songs.** A note of _mp3 URL crawled, but not archived_ means an `.mp3` URL "
-        "was seen but every capture of it is an error or redirect.",
-        "",
-        "| Song slug | Formats | mp3 URL seen? | Captures (first – last) | Newest legacy capture |",
-        "|---|---|---|---|---|",
-    ]
-    for s in legacy:
-        newest = s.legacy_captures[-1]
-        mp3_note = "mp3 URL crawled, but not archived" if s.has_any_mp3_url else "no"
-        lines.append(
-            f"| `{s.slug}` | {', '.join(s.formats)} | {mp3_note} | "
-            f"{len(s.captures)} ({s.first_seen[:4]} – {s.last_seen[:4]}) | "
-            f"[{newest.timestamp[:8]} .{audio_file(newest.original).ext}]"
-            f"({wayback_view_url(newest.timestamp, newest.original)}) |"
-        )
-    path.write_text("\n".join(lines) + "\n", encoding="utf-8")
-    return legacy
 
 
 def write_summary(
@@ -439,7 +391,8 @@ def main(argv: list[str] | None = None) -> int:
 
     write_inventory_csv(songs, reports / "phase1_audio_inventory.csv")
     write_candidate_pages_csv(pages, reports / "phase1_candidate_pages.csv")
-    legacy = write_legacy_report(songs, reports / "legacy_only_songs.md")
+    # legacy_only_songs.md is written by build_catalog (with titles); count only here.
+    legacy = [s for s in songs.values() if s.best_mp3 is None and s.legacy_captures]
     write_summary(songs, audio_rows, inventory, pages, legacy, client.live_requests,
                   reports / "phase1_survey.md")
     client.log(f"Done: {len(songs)} songs, {len(legacy)} legacy-only, {len(inventory)} unique URLs.")

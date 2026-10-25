@@ -56,19 +56,6 @@ AUDIO_LINK_RE = re.compile(
     re.I,
 )
 OUTAGE_MARKER = "Internet Archive: Temporarily Offline"
-# Link labels that describe the file format rather than the song (observed 2026-10-25).
-GENERIC_ANCHOR_RE = re.compile(
-    r"format|download|stream|listen|click|here|play|promo clip|^\W*(mp3|mpeg|real ?audio|au)\W*$", re.I
-)
-
-
-def is_generic_anchor(text: str) -> bool:
-    """True if anchor text is a format/download label rather than a song title.
-
-    References:
-        [PY-RE] re.search, https://docs.python.org/3/library/re.html
-    """
-    return len(text) <= 3 or bool(GENERIC_ANCHOR_RE.search(text))
 
 
 def validate_capture(body: str) -> None:
@@ -85,6 +72,19 @@ def validate_capture(body: str) -> None:
     """
     if OUTAGE_MARKER in body:
         raise ValueError("Wayback outage page")
+
+
+def is_generic_anchor(text: str) -> bool:
+    """True if anchor text is a format/download label rather than a song title.
+
+    Delegates to :func:`capsteps_ingest.extract.is_generic` so reports and
+    extraction agree.
+
+    References:
+        None (see extract.is_generic).
+    """
+    from .extract import is_generic
+    return is_generic(text)
 
 
 class AnchorCollector(HTMLParser):
@@ -262,7 +262,7 @@ def write_link_titles_csv(snapshots: list[Snapshot], path: Path) -> None:
         [PY-CSV] csv.writer, https://docs.python.org/3/library/csv.html
     """
     with path.open("w", newline="", encoding="utf-8") as handle:
-        writer = csv.writer(handle)
+        writer = csv.writer(handle, lineterminator="\n")
         writer.writerow(["slug", "anchor_text", "generic_label", "page", "capture_timestamp", "wayback_url"])
         rows = sorted(
             (slug, text, "yes" if is_generic_anchor(text) else "no", s.page, s.row.timestamp,

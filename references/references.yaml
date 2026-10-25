@@ -198,3 +198,47 @@ references:
     publisher: Python 3 Documentation
     url: https://docs.python.org/3/library/datetime.html
     accessed: 2026-10-25
+
+  - id: WAYBACK-CAPSTEPS-HOME
+    author: Internet Archive
+    title: Wayback Machine captures of the capsteps.com homepage
+    publisher: Internet Archive Wayback Machine
+    url: https://web.archive.org/web/*/capsteps.com/
+    accessed: 2026-10-25
+    note: Primary source for song titles, parodied songs, albums, dates, descriptions, and copyright notices (1996–2021).
+
+  - id: WAYBACK-CAPSTEPS-SITE
+    author: Internet Archive
+    title: Wayback Machine captures of all capsteps.com pages
+    publisher: Internet Archive Wayback Machine
+    url: https://web.archive.org/web/*/capsteps.com/*
+    accessed: 2026-10-25
+    note: Secondary pages (radio, specials, Lirty Dies, albums) used for song details.
+
+  - id: PY-SQLITE3
+    author: Python Software Foundation
+    title: sqlite3 — DB-API 2.0 interface for SQLite databases
+    publisher: Python 3 Documentation
+    url: https://docs.python.org/3/library/sqlite3.html
+    accessed: 2026-10-25
+
+  - id: PY-HTML
+    author: Python Software Foundation
+    title: html — HyperText Markup Language support
+    publisher: Python 3 Documentation
+    url: https://docs.python.org/3/library/html.html
+    accessed: 2026-10-25
+
+  - id: IA-WAYBACK-URL
+    author: Wikipedia contributors
+    title: "Help:Using the Wayback Machine — Wayback Machine URL formats (flags id_, if_, im_)"
+    publisher: Wikipedia, The Free Encyclopedia
+    url: https://en.wikipedia.org/wiki/Help:Using_the_Wayback_Machine
+    accessed: 2026-10-25
+    note: >-
+      Documents the `id_` flag ("Identity - perform no alterations of the original resource,
+      return it as it was archived") used for raw capture URLs (`/web/<ts>id_/<url>`), and the
+      `if_` flag recommended for toolbar-free links to view pages. The Internet Archive's own FAQ
+      once described `id_` but no longer does (Internet Archive Forums, "FAQ On 'id_' Wayback
+      Toolbar Removal", https://archive.org/post/1008502/faq-on-id_-wayback-toolbar-removal),
+      so this community-maintained page is the best available description.

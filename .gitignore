@@ -21,3 +21,6 @@ web/dist/
 .idea/
 .DS_Store
 *.swp
+
+# Regenerable binary built by ingest/capsteps_ingest/build_catalog.py (catalog.json is the tracked output)
+data/catalog.sqlite

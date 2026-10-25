@@ -85,3 +85,14 @@ def test_get_gives_up_after_max_retries(tmp_path):
     with pytest.raises(CdxUnavailable):
         client.get("https://web.archive.org/cdx/search/cdx?url=y")
     assert not list(tmp_path.iterdir())
+
+
+def test_offline_mode_never_fetches(tmp_path):
+    """Offline clients serve cache only and raise on a miss. References: None."""
+    client, calls = make_client(tmp_path, [page([ROW])])
+    url = "https://web.archive.org/cdx/search/cdx?url=z"
+    client.get(url)
+    offline = CdxClient(tmp_path, fetch=lambda u: 1 / 0, offline=True, log=lambda m: None)
+    assert offline.get(url) == page([ROW])
+    with pytest.raises(CdxUnavailable):
+        offline.get(url + "&other")
