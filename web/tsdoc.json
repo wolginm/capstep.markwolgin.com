@@ -1,0 +1,11 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/tsdoc/v0/tsdoc.schema.json",
+  "//": "Declares @references, the block tag that lists a function's sources by bibliography ID ([TSDOC-CONFIG], [MS-TSDOC]).",
+  "tagDefinitions": [
+    {
+      "tagName": "@references",
+      "syntaxKind": "block",
+      "allowMultiple": false
+    }
+  ]
+}

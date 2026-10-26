@@ -23,14 +23,52 @@ Google. *Google Python Style Guide*. Google. <https://google.github.io/styleguid
 Internet Archive. *Wayback CDX Server API*. GitHub (internetarchive/wayback). <https://github.com/internetarchive/wayback/tree/master/wayback-cdx-server> (accessed 2026-10-25).
 
 - **Used for:** Query parameters (url, matchType, filter, collapse, fl, output, limit) for enumerating captures.
-- **Cited in:** `README.md`, `ingest/capsteps_ingest/__init__.py`, `ingest/capsteps_ingest/build_catalog.py`, `ingest/capsteps_ingest/cdx.py`, `ingest/capsteps_ingest/harvest.py`, `ingest/capsteps_ingest/pages.py`, `ingest/capsteps_ingest/survey.py`, `ingest/tests/test_cdx.py`, `plan/PLAN.md`, `reports/phase1_findings.md`, `reports/phase1_listing_pages.md`, `reports/phase1_survey.md`, `tools/build_bibliography.py`
+- **Cited in:** `README.md`, `ingest/capsteps_ingest/__init__.py`, `ingest/capsteps_ingest/build_catalog.py`, `ingest/capsteps_ingest/cdx.py`, `ingest/capsteps_ingest/harvest.py`, `ingest/capsteps_ingest/pages.py`, `ingest/capsteps_ingest/survey.py`, `ingest/tests/test_cdx.py`, `plan/PLAN.md`, `reports/phase1_findings.md`, `reports/phase1_listing_pages.md`, `reports/phase1_survey.md`, `tools/build_bibliography.py`, `web/src/lib/format.ts`
 
 ### [IA-WAYBACK-URL]
 
 Wikipedia contributors. *Help:Using the Wayback Machine — Wayback Machine URL formats (flags id_, if_, im_)*. Wikipedia, The Free Encyclopedia. <https://en.wikipedia.org/wiki/Help:Using_the_Wayback_Machine> (accessed 2026-10-25).
 
 - **Used for:** Documents the `id_` flag ("Identity - perform no alterations of the original resource, return it as it was archived") used for raw capture URLs (`/web/<ts>id_/<url>`), and the `if_` flag recommended for toolbar-free links to view pages. The Internet Archive's own FAQ once described `id_` but no longer does (Internet Archive Forums, "FAQ On 'id_' Wayback Toolbar Removal", https://archive.org/post/1008502/faq-on-id_-wayback-toolbar-removal), so this community-maintained page is the best available description.
-- **Cited in:** `ingest/capsteps_ingest/build_catalog.py`, `ingest/capsteps_ingest/harvest.py`, `ingest/capsteps_ingest/pages.py`, `ingest/capsteps_ingest/urls.py`, `ingest/tests/test_urls.py`, `plan/PLAN.md`, `reports/phase1_findings.md`
+- **Cited in:** `ingest/capsteps_ingest/build_catalog.py`, `ingest/capsteps_ingest/harvest.py`, `ingest/capsteps_ingest/pages.py`, `ingest/capsteps_ingest/urls.py`, `ingest/tests/test_urls.py`, `plan/PLAN.md`, `reports/phase1_findings.md`, `web/src/lib/format.ts`, `web/src/pages/CopyrightPage.tsx`, `web/src/pages/SongPage.tsx`
+
+### [JEST-DOM]
+
+Testing Library contributors. *jest-dom – custom DOM matchers*. GitHub. <https://github.com/testing-library/jest-dom> (accessed 2026-10-26).
+
+- **Cited in:** `web/src/pages/pages.test.tsx`, `web/src/test/setup.ts`
+
+### [MDN-AUDIO]
+
+MDN contributors. *<audio>: The Embed Audio element*. MDN Web Docs. <https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/audio> (accessed 2026-10-26).
+
+- **Used for:** controls, preload="none" (nothing is fetched from the archive until the listener presses play).
+- **Cited in:** `web/e2e/smoke.spec.ts`, `web/src/pages/SongPage.tsx`
+
+### [MDN-ENCODEURICOMPONENT]
+
+MDN contributors. *encodeURIComponent()*. MDN Web Docs. <https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/encodeURIComponent> (accessed 2026-10-26).
+
+- **Cited in:** `web/src/lib/format.ts`
+
+### [MDN-FETCH]
+
+MDN contributors. *Fetch API*. MDN Web Docs. <https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API> (accessed 2026-10-26).
+
+- **Cited in:** `web/src/components/DataProvider.tsx`, `web/src/lib/data.ts`
+
+### [MDN-INTL-COLLATOR]
+
+MDN contributors. *Intl.Collator*. MDN Web Docs. <https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/Collator> (accessed 2026-10-26).
+
+- **Used for:** Locale-aware, case- and accent-insensitive title sorting and search.
+- **Cited in:** `web/src/lib/search.ts`
+
+### [MDN-TABLE]
+
+MDN contributors. *<table>: The Table element (caption, scope, accessibility)*. MDN Web Docs. <https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/table> (accessed 2026-10-26).
+
+- **Cited in:** `web/src/pages/BrowsePage.tsx`
 
 ### [MS-TSDOC]
 
@@ -38,6 +76,45 @@ Microsoft. *TSDoc*. tsdoc.org. <https://tsdoc.org/> (accessed 2026-10-25).
 
 - **Used for:** Comment convention for TypeScript code in web/.
 - **Cited in:** `README.md`
+
+### [NODE-FS]
+
+OpenJS Foundation. *Node.js – File system (fs/promises)*. nodejs.org. <https://nodejs.org/api/fs.html> (accessed 2026-10-26).
+
+- **Cited in:** `web/scripts/sync-data.ts`
+
+### [NODE-TYPESCRIPT]
+
+OpenJS Foundation. *Node.js – Modules: TypeScript (type stripping)*. nodejs.org. <https://nodejs.org/api/typescript.html> (accessed 2026-10-26).
+
+- **Used for:** Runs web/scripts/sync-data.ts directly on Node 24.
+- **Cited in:** `web/scripts/sync-data.ts`
+
+### [NVM-SH]
+
+nvm contributors. *nvm – Node Version Manager*. GitHub. <https://github.com/nvm-sh/nvm> (accessed 2026-10-26).
+
+- **Used for:** Node 24 LTS installed by the developer with nvm; pinned in .nvmrc.
+- **Cited in:** `README.md`
+
+### [OXLINT-DOCS]
+
+Oxc contributors. *Oxlint – Usage*. oxc.rs. <https://oxc.rs/docs/guide/usage/linter.html> (accessed 2026-10-26).
+
+- **Used for:** Linter shipped with the Vite 8 react-ts template.
+- **Cited in:** _not yet cited_
+
+### [PLAYWRIGHT-CONFIG]
+
+Microsoft. *Playwright Test – Configuration*. playwright.dev. <https://playwright.dev/docs/test-configuration> (accessed 2026-10-26).
+
+- **Cited in:** `web/e2e/smoke.spec.ts`, `web/playwright.config.ts`
+
+### [PLAYWRIGHT-WEBSERVER]
+
+Microsoft. *Playwright Test – Web server*. playwright.dev. <https://playwright.dev/docs/test-webserver> (accessed 2026-10-26).
+
+- **Cited in:** `web/playwright.config.ts`
 
 ### [PY-ARGPARSE]
 
@@ -148,12 +225,79 @@ Kirill Simonov and the PyYAML contributors. *PyYAML Documentation*. pyyaml.org. 
 - **Used for:** yaml.safe_load for reading references.yaml.
 - **Cited in:** `tools/build_bibliography.py`
 
+### [REACT-DOCS]
+
+Meta Open Source. *React Reference (hooks, components, StrictMode)*. react.dev. <https://react.dev/reference/react> (accessed 2026-10-26).
+
+- **Used for:** React 19 API (useState, useEffect, useMemo, createContext, use of StrictMode) used throughout web/src.
+- **Cited in:** `web/src/components/DataProvider.tsx`, `web/src/lib/data.ts`, `web/src/pages/BibliographyPage.tsx`, `web/src/pages/BrowsePage.tsx`
+
+### [REACT-DOM-CREATEROOT]
+
+Meta Open Source. *createRoot – React DOM*. react.dev. <https://react.dev/reference/react-dom/client/createRoot> (accessed 2026-10-26).
+
+- **Used for:** Mounting the app in web/src/main.tsx.
+- **Cited in:** `web/src/main.tsx`
+
+### [REACT-MARKDOWN]
+
+Titus Wormer and contributors (unified collective). *react-markdown*. GitHub. <https://github.com/remarkjs/react-markdown> (accessed 2026-10-26).
+
+- **Used for:** Renders docs/AI_USAGE.md on the AI Disclosure page without dangerouslySetInnerHTML.
+- **Cited in:** `web/src/pages/AiDisclosurePage.tsx`
+
+### [REACT-ROUTER-HASHROUTER]
+
+Remix Software / Shopify. *<HashRouter> – React Router API Reference (v8.5.0)*. reactrouter.com. <https://reactrouter.com/api/declarative-routers/HashRouter> (accessed 2026-10-26).
+
+- **Used for:** "Stores the location in the hash portion of the URL so it is not sent to the server"; chosen so deep links work on GitHub Pages and any static host without rewrite rules.
+- **Cited in:** `README.md`, `web/src/components/Layout.tsx`, `web/src/main.tsx`
+
+### [REACT-ROUTER-ROUTING]
+
+Remix Software / Shopify. *Routing (Declarative mode) – React Router*. reactrouter.com. <https://reactrouter.com/start/declarative/routing> (accessed 2026-10-26).
+
+- **Used for:** Routes, Route, Link, NavLink, useParams, useSearchParams.
+- **Cited in:** `web/src/App.tsx`, `web/src/components/Layout.tsx`, `web/src/lib/query-params.ts`, `web/src/pages/BibliographyPage.tsx`, `web/src/pages/BrowsePage.tsx`, `web/src/pages/NotFoundPage.tsx`, `web/src/pages/SongPage.tsx`, `web/src/test/render.tsx`
+
+### [REMARK-GFM]
+
+Titus Wormer and contributors (unified collective). *remark-gfm (GitHub Flavored Markdown tables)*. GitHub. <https://github.com/remarkjs/remark-gfm> (accessed 2026-10-26).
+
+- **Cited in:** `web/src/pages/AiDisclosurePage.tsx`
+
 ### [RFC-3986]
 
 T. Berners-Lee, R. Fielding, L. Masinter. *RFC 3986: Uniform Resource Identifier (URI): Generic Syntax*. IETF. <https://datatracker.ietf.org/doc/html/rfc3986> (accessed 2026-10-25).
 
 - **Used for:** Case-insensitivity of scheme/host and default-port normalization (§6.2.2–6.2.3).
 - **Cited in:** `ingest/capsteps_ingest/urls.py`, `ingest/tests/test_urls.py`
+
+### [RFC-6068]
+
+M. Duerst, L. Masinter, J. Zawinski. *RFC 6068: The 'mailto' URI Scheme*. IETF. <https://www.rfc-editor.org/rfc/rfc6068> (accessed 2026-10-26).
+
+- **Used for:** Pre-filled takedown subject lines (percent-encoded `subject=` header field).
+- **Cited in:** `web/src/lib/format.test.ts`, `web/src/lib/format.ts`, `web/src/pages/CopyrightPage.tsx`
+
+### [TESTING-LIBRARY-REACT]
+
+Testing Library contributors. *React Testing Library – Introduction*. testing-library.com. <https://testing-library.com/docs/react-testing-library/intro/> (accessed 2026-10-26).
+
+- **Cited in:** `web/src/pages/pages.test.tsx`, `web/src/test/render.tsx`, `web/src/test/setup.ts`
+
+### [TS-TSCONFIG]
+
+Microsoft. *TSConfig Reference*. typescriptlang.org. <https://www.typescriptlang.org/tsconfig/> (accessed 2026-10-26).
+
+- **Cited in:** `web/src/lib/types.ts`
+
+### [TSDOC-CONFIG]
+
+Microsoft. *@microsoft/tsdoc-config (tsdoc.json custom tag definitions)*. tsdoc.org. <https://tsdoc.org/pages/packages/tsdoc-config/> (accessed 2026-10-26).
+
+- **Used for:** Declares the custom `@references` block tag used in every TSDoc comment.
+- **Cited in:** `README.md`
 
 ### [UV-DOCS]
 
@@ -162,12 +306,45 @@ Astral. *uv documentation*. docs.astral.sh. <https://docs.astral.sh/uv/> (access
 - **Used for:** Python project and dependency management for ingest/.
 - **Cited in:** `ingest/pyproject.toml`
 
+### [VITE-ASSETS]
+
+Vite contributors. *Static Asset Handling – the public directory*. vite.dev. <https://vite.dev/guide/assets.html> (accessed 2026-10-26).
+
+- **Used for:** Catalog, references and AI-usage log are served from web/public/data/.
+- **Cited in:** `web/scripts/sync-data.ts`
+
+### [VITE-CONFIG]
+
+Vite contributors. *Shared Options – Vite configuration (base, publicDir)*. vite.dev. <https://vite.dev/config/shared-options.html> (accessed 2026-10-26).
+
+- **Used for:** `base: './'` so the build runs from any sub-path (GitHub Pages or self-hosted).
+- **Cited in:** `web/src/lib/data.ts`, `web/vite.config.ts`
+
+### [VITE-ENV]
+
+Vite contributors. *Env Variables and Modes (import.meta.env.BASE_URL)*. vite.dev. <https://vite.dev/guide/env-and-mode.html> (accessed 2026-10-26).
+
+- **Cited in:** `web/src/lib/data.ts`
+
+### [VITE-STATIC-DEPLOY]
+
+Vite contributors. *Deploying a Static Site*. vite.dev. <https://vite.dev/guide/static-deploy.html> (accessed 2026-10-26).
+
+- **Used for:** GitHub Pages and generic static hosting of web/dist.
+- **Cited in:** `README.md`, `web/index.html`, `web/vite.config.ts`
+
+### [VITEST-CONFIG]
+
+Vitest contributors. *Configuring Vitest*. vitest.dev. <https://vitest.dev/config/> (accessed 2026-10-26).
+
+- **Cited in:** `web/scripts/sync-data.test.ts`, `web/src/lib/format.test.ts`, `web/src/lib/search.test.ts`, `web/vite.config.ts`
+
 ### [WAYBACK-CAPSTEPS-HOME]
 
 Internet Archive. *Wayback Machine captures of the capsteps.com homepage*. Internet Archive Wayback Machine. <https://web.archive.org/web/*/capsteps.com/> (accessed 2026-10-25).
 
 - **Used for:** Primary source for song titles, parodied songs, albums, dates, descriptions, and copyright notices (1996–2021).
-- **Cited in:** `ingest/capsteps_ingest/build_catalog.py`, `ingest/capsteps_ingest/extract.py`, `ingest/tests/test_extract.py`, `reports/legacy_only_songs.md`, `reports/phase2_extraction.md`, `reports/unarchived_songs.md`
+- **Cited in:** `ingest/capsteps_ingest/build_catalog.py`, `ingest/capsteps_ingest/extract.py`, `ingest/tests/test_extract.py`, `reports/legacy_only_songs.md`, `reports/phase2_extraction.md`, `reports/unarchived_songs.md`, `web/src/pages/pages.test.tsx`, `web/src/test/fixtures.ts`
 
 ### [WAYBACK-CAPSTEPS-SITE]
 
@@ -188,11 +365,25 @@ Internet Archive. *Wayback Machine captures of https://www.capsteps.com/songs/*.
 Internet Archive. *CDX index of archived audio files on capsteps.com*. Internet Archive Wayback Machine. <https://web.archive.org/cdx/search/cdx?url=capsteps.com&matchType=domain&filter=mimetype:audio.*> (accessed 2026-10-25).
 
 - **Used for:** Probe showing the audio lives under /sounds/ in .mp3/.au/.ra/.ram formats (plan §2).
-- **Cited in:** `ingest/capsteps_ingest/build_catalog.py`, `ingest/capsteps_ingest/pages.py`, `ingest/capsteps_ingest/survey.py`, `ingest/tests/test_urls.py`, `plan/PLAN.md`, `reports/legacy_only_songs.md`, `reports/phase1_findings.md`, `reports/phase1_listing_pages.md`, `reports/phase1_survey.md`, `reports/phase2_extraction.md`, `reports/unarchived_songs.md`
+- **Cited in:** `ingest/capsteps_ingest/build_catalog.py`, `ingest/capsteps_ingest/pages.py`, `ingest/capsteps_ingest/survey.py`, `ingest/tests/test_urls.py`, `plan/PLAN.md`, `reports/legacy_only_songs.md`, `reports/phase1_findings.md`, `reports/phase1_listing_pages.md`, `reports/phase1_survey.md`, `reports/phase2_extraction.md`, `reports/unarchived_songs.md`, `web/src/pages/AboutPage.tsx`
+
+### [WCAG-22]
+
+W3C. *Web Content Accessibility Guidelines (WCAG) 2.2*. W3C. <https://www.w3.org/TR/WCAG22/> (accessed 2026-10-26).
+
+- **Used for:** Contrast (1.4.3), keyboard access (2.1.1), bypass blocks / skip link (2.4.1), focus visible (2.4.7).
+- **Cited in:** `web/src/components/Layout.tsx`, `web/src/components/Loading.tsx`, `web/src/index.css`, `web/src/pages/BrowsePage.tsx`, `web/src/pages/SongPage.tsx`
 
 ### [WIKI-CAPSTEPS]
 
 Wikipedia contributors. *Capitol Steps*. Wikipedia, The Free Encyclopedia. <https://en.wikipedia.org/wiki/Capitol_Steps> (accessed 2026-10-25).
 
 - **Used for:** Background on the troupe (history, albums, 2021 shutdown) quoted in CLAUDE.md and the README.
-- **Cited in:** `README.md`
+- **Cited in:** `README.md`, `web/src/pages/AboutPage.tsx`
+
+### [YAML-NPM]
+
+Eemeli Aro. *yaml (npm package) – parse()*. eemeli.org. <https://eemeli.org/yaml/> (accessed 2026-10-26).
+
+- **Used for:** Converts references/references.yaml to JSON for the Bibliography page (web/scripts/sync-data.ts).
+- **Cited in:** `web/scripts/sync-data.test.ts`, `web/scripts/sync-data.ts`

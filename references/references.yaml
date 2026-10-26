@@ -242,3 +242,227 @@ references:
       once described `id_` but no longer does (Internet Archive Forums, "FAQ On 'id_' Wayback
       Toolbar Removal", https://archive.org/post/1008502/faq-on-id_-wayback-toolbar-removal),
       so this community-maintained page is the best available description.
+
+  # --- Phase 3: website (accessed 2026-10-26) ---------------------------------------
+
+  - id: REACT-DOCS
+    author: Meta Open Source
+    title: React Reference (hooks, components, StrictMode)
+    publisher: react.dev
+    url: https://react.dev/reference/react
+    accessed: 2026-10-26
+    note: React 19 API (useState, useEffect, useMemo, createContext, use of StrictMode) used throughout web/src.
+
+  - id: REACT-DOM-CREATEROOT
+    author: Meta Open Source
+    title: createRoot – React DOM
+    publisher: react.dev
+    url: https://react.dev/reference/react-dom/client/createRoot
+    accessed: 2026-10-26
+    note: Mounting the app in web/src/main.tsx.
+
+  - id: REACT-ROUTER-HASHROUTER
+    author: Remix Software / Shopify
+    title: "<HashRouter> – React Router API Reference (v8.5.0)"
+    publisher: reactrouter.com
+    url: https://reactrouter.com/api/declarative-routers/HashRouter
+    accessed: 2026-10-26
+    note: >-
+      "Stores the location in the hash portion of the URL so it is not sent to the server";
+      chosen so deep links work on GitHub Pages and any static host without rewrite rules.
+
+  - id: REACT-ROUTER-ROUTING
+    author: Remix Software / Shopify
+    title: Routing (Declarative mode) – React Router
+    publisher: reactrouter.com
+    url: https://reactrouter.com/start/declarative/routing
+    accessed: 2026-10-26
+    note: Routes, Route, Link, NavLink, useParams, useSearchParams.
+
+  - id: VITE-CONFIG
+    author: Vite contributors
+    title: Shared Options – Vite configuration (base, publicDir)
+    publisher: vite.dev
+    url: https://vite.dev/config/shared-options.html
+    accessed: 2026-10-26
+    note: "`base: './'` so the build runs from any sub-path (GitHub Pages or self-hosted)."
+
+  - id: VITE-ASSETS
+    author: Vite contributors
+    title: Static Asset Handling – the public directory
+    publisher: vite.dev
+    url: https://vite.dev/guide/assets.html
+    accessed: 2026-10-26
+    note: Catalog, references and AI-usage log are served from web/public/data/.
+
+  - id: VITE-ENV
+    author: Vite contributors
+    title: Env Variables and Modes (import.meta.env.BASE_URL)
+    publisher: vite.dev
+    url: https://vite.dev/guide/env-and-mode.html
+    accessed: 2026-10-26
+
+  - id: VITE-STATIC-DEPLOY
+    author: Vite contributors
+    title: Deploying a Static Site
+    publisher: vite.dev
+    url: https://vite.dev/guide/static-deploy.html
+    accessed: 2026-10-26
+    note: GitHub Pages and generic static hosting of web/dist.
+
+  - id: TS-TSCONFIG
+    author: Microsoft
+    title: TSConfig Reference
+    publisher: typescriptlang.org
+    url: https://www.typescriptlang.org/tsconfig/
+    accessed: 2026-10-26
+
+  - id: TSDOC-CONFIG
+    author: Microsoft
+    title: "@microsoft/tsdoc-config (tsdoc.json custom tag definitions)"
+    publisher: tsdoc.org
+    url: https://tsdoc.org/pages/packages/tsdoc-config/
+    accessed: 2026-10-26
+    note: Declares the custom `@references` block tag used in every TSDoc comment.
+
+  - id: VITEST-CONFIG
+    author: Vitest contributors
+    title: Configuring Vitest
+    publisher: vitest.dev
+    url: https://vitest.dev/config/
+    accessed: 2026-10-26
+
+  - id: TESTING-LIBRARY-REACT
+    author: Testing Library contributors
+    title: React Testing Library – Introduction
+    publisher: testing-library.com
+    url: https://testing-library.com/docs/react-testing-library/intro/
+    accessed: 2026-10-26
+
+  - id: JEST-DOM
+    author: Testing Library contributors
+    title: jest-dom – custom DOM matchers
+    publisher: GitHub
+    url: https://github.com/testing-library/jest-dom
+    accessed: 2026-10-26
+
+  - id: PLAYWRIGHT-CONFIG
+    author: Microsoft
+    title: Playwright Test – Configuration
+    publisher: playwright.dev
+    url: https://playwright.dev/docs/test-configuration
+    accessed: 2026-10-26
+
+  - id: PLAYWRIGHT-WEBSERVER
+    author: Microsoft
+    title: Playwright Test – Web server
+    publisher: playwright.dev
+    url: https://playwright.dev/docs/test-webserver
+    accessed: 2026-10-26
+
+  - id: REACT-MARKDOWN
+    author: Titus Wormer and contributors (unified collective)
+    title: react-markdown
+    publisher: GitHub
+    url: https://github.com/remarkjs/react-markdown
+    accessed: 2026-10-26
+    note: Renders docs/AI_USAGE.md on the AI Disclosure page without dangerouslySetInnerHTML.
+
+  - id: REMARK-GFM
+    author: Titus Wormer and contributors (unified collective)
+    title: remark-gfm (GitHub Flavored Markdown tables)
+    publisher: GitHub
+    url: https://github.com/remarkjs/remark-gfm
+    accessed: 2026-10-26
+
+  - id: YAML-NPM
+    author: Eemeli Aro
+    title: "yaml (npm package) – parse()"
+    publisher: eemeli.org
+    url: https://eemeli.org/yaml/
+    accessed: 2026-10-26
+    note: Converts references/references.yaml to JSON for the Bibliography page (web/scripts/sync-data.ts).
+
+  - id: NODE-TYPESCRIPT
+    author: OpenJS Foundation
+    title: "Node.js – Modules: TypeScript (type stripping)"
+    publisher: nodejs.org
+    url: https://nodejs.org/api/typescript.html
+    accessed: 2026-10-26
+    note: Runs web/scripts/sync-data.ts directly on Node 24.
+
+  - id: NODE-FS
+    author: OpenJS Foundation
+    title: Node.js – File system (fs/promises)
+    publisher: nodejs.org
+    url: https://nodejs.org/api/fs.html
+    accessed: 2026-10-26
+
+  - id: NVM-SH
+    author: nvm contributors
+    title: nvm – Node Version Manager
+    publisher: GitHub
+    url: https://github.com/nvm-sh/nvm
+    accessed: 2026-10-26
+    note: Node 24 LTS installed by the developer with nvm; pinned in .nvmrc.
+
+  - id: OXLINT-DOCS
+    author: Oxc contributors
+    title: Oxlint – Usage
+    publisher: oxc.rs
+    url: https://oxc.rs/docs/guide/usage/linter.html
+    accessed: 2026-10-26
+    note: Linter shipped with the Vite 8 react-ts template.
+
+  - id: MDN-AUDIO
+    author: MDN contributors
+    title: "<audio>: The Embed Audio element"
+    publisher: MDN Web Docs
+    url: https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/audio
+    accessed: 2026-10-26
+    note: controls, preload="none" (nothing is fetched from the archive until the listener presses play).
+
+  - id: MDN-TABLE
+    author: MDN contributors
+    title: "<table>: The Table element (caption, scope, accessibility)"
+    publisher: MDN Web Docs
+    url: https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/table
+    accessed: 2026-10-26
+
+  - id: MDN-FETCH
+    author: MDN contributors
+    title: Fetch API
+    publisher: MDN Web Docs
+    url: https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API
+    accessed: 2026-10-26
+
+  - id: MDN-ENCODEURICOMPONENT
+    author: MDN contributors
+    title: encodeURIComponent()
+    publisher: MDN Web Docs
+    url: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/encodeURIComponent
+    accessed: 2026-10-26
+
+  - id: MDN-INTL-COLLATOR
+    author: MDN contributors
+    title: Intl.Collator
+    publisher: MDN Web Docs
+    url: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/Collator
+    accessed: 2026-10-26
+    note: Locale-aware, case- and accent-insensitive title sorting and search.
+
+  - id: RFC-6068
+    author: M. Duerst, L. Masinter, J. Zawinski
+    title: "RFC 6068: The 'mailto' URI Scheme"
+    publisher: IETF
+    url: https://www.rfc-editor.org/rfc/rfc6068
+    accessed: 2026-10-26
+    note: Pre-filled takedown subject lines (percent-encoded `subject=` header field).
+
+  - id: WCAG-22
+    author: W3C
+    title: Web Content Accessibility Guidelines (WCAG) 2.2
+    publisher: W3C
+    url: https://www.w3.org/TR/WCAG22/
+    accessed: 2026-10-26
+    note: Contrast (1.4.3), keyboard access (2.1.1), bypass blocks / skip link (2.4.1), focus visible (2.4.7).

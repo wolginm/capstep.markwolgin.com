@@ -1,6 +1,6 @@
 # Capitol Steps Preservation Site — Project Plan
 
-**Status:** Phase 2 COMPLETE (2026-10-25), pending the developer's commit approval. Phase 3 awaits approval.
+**Status:** Phase 3 COMPLETE (2026-10-26). Phase 4 in progress (approved 2026-10-26).
 **Author:** Claude (agent), for wolginm
 **Date:** 2026-10-25 (revised 2026-10-25)
 
@@ -182,6 +182,18 @@ continue.
 - Accessibility basics: keyboard navigation, labelled audio controls, contrast.
 - Tests: Vitest for components and utilities, plus a small Playwright smoke test.
 
+#### Phase 3 implementation notes (2026-10-26)
+- Stack as installed: Vite 8, React 19, TypeScript 6, **React Router 8** (declarative mode;
+  v8 had replaced v7 by the time of install), Vitest 5, Playwright, oxlint (template default).
+- **HashRouter** and `base: './'`: one build works at a domain root or any sub-path
+  (GitHub Pages) with no server rewrites. Verified by serving `dist/` under a sub-path.
+- Data is fetched at runtime from `web/public/data/` (gitignored copies made by
+  `scripts/sync-data.ts`), so `data/`, `references/` and `docs/` stay the single sources.
+- The player uses `preload="none"`: nothing is requested from the Internet Archive until
+  the listener presses play. The smoke test blocks all archive requests.
+- Only archived copyright notices are shown; there is no invented fallback text.
+- `web/src/config.ts` holds the takedown address; a test checks it matches `catalog.json`.
+
 ### Phase 4 — Citation enforcement and QA
 - A lint script that fails if any function/method lacks a `References:` docstring
   section, or cites an ID missing from `references.yaml` (Python: AST walk;
@@ -278,6 +290,9 @@ capitol_steps/
    `COPYRIGHT TAKEDOWN NOTICE -- <song title>`. ✅
 6. **Variants:** each variant (e.g. `401k-obamamia`) is its own song. Album grouping
    may come later; `base_slug` is kept as a hint for it. ✅
+7. **Node.js (2026-10-25):** Node 24 LTS, installed by the developer. The machine had Ubuntu's
+   Node 18 (end-of-life), which current Vite 8, Vitest 5 and React Router 7 do not support.
+   Pinning older tools for Node 18 was rejected. ✅
 
 ## 10. Risks
 

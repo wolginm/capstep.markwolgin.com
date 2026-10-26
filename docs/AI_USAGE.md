@@ -27,14 +27,23 @@ is updated at the end of every phase.
 
 **The LLM (Claude) does:**
 - drafts and revises the plan (`plan/PLAN.md`) for the human to review
-- writes the code (Python ingestion pipeline, tooling, and later the website), tests, and docs
+- writes the code (Python ingestion pipeline, tooling, and the website), tests, and docs
 - queries the Internet Archive and summarizes the findings in reports
 - keeps the citation registry (`references/references.yaml`) and bibliography up to date
 - reports results, including failures and open questions, back to the human
 
-**Verification:** LLM output can be wrong. Every source is cited by ID and listed in
-`BIBLIOGRAPHY.md`, and data fields will carry source citations so readers can check them.
-Automated tests cover the pipeline logic.
+## Limitations and verification
+
+- **LLM output can be wrong.** The song details on this site were extracted from archived
+  capsteps.com pages by rules the LLM wrote and then checked against samples of those pages;
+  some titles, albums, dates or descriptions may still be wrong or missing.
+- Titles the archive never printed are made from the file name and are marked
+  "file-name title" on the site.
+- **Check the source.** Every song page links to the archived pages its details came from,
+  and every source the project uses is cited by ID and listed in the Bibliography.
+- Automated tests cover the pipeline and the website, but they test the rules, not every
+  one of the 686 entries.
+- Corrections are welcome through the contact address on the Copyright & takedown page.
 
 ## Phase log
 
@@ -78,3 +87,17 @@ Automated tests cover the pipeline logic.
   inconsistent album names, and site prompts ("Read more Lirty Dies") taken as parodied songs.
   Found a citable description of the Wayback `id_` URL flag. 65 tests pass. Result: 686
   playable songs, 95% with titles from the archive.
+
+### Phase 3 — Website (2026-10-26)
+- **Human:** approved Phase 3 and the Phase 2 commit; installed Node.js 24 LTS (with nvm)
+  after choosing it over pinning older tools for the system's end-of-life Node 18.
+- **LLM:** scaffolded the React + TypeScript site with Vite (`web/`): Browse (search, filters
+  by kind/album/year, sorting, shareable URLs), song pages (player streaming straight from
+  the Wayback Machine, nothing preloaded; archived copyright notice quoted verbatim; capture
+  dates; sources; pre-filled takedown link), About, Copyright & takedown, Bibliography, and
+  this page, which renders this log. The LLM-disclosure footer is on every page. Checked
+  library versions and APIs against current documentation before use (React Router had
+  reached v8). Verified colour contrast by calculation and that the build works under a
+  sub-path. Caught its own mistakes in testing: a comment closed early by a `*/` inside a
+  URL, and an invented fallback copyright line, removed so only archived notices are shown.
+  36 unit/component tests and 2 browser smoke tests pass.

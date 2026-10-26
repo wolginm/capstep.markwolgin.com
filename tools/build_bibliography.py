@@ -38,7 +38,9 @@ REQUIRED_FIELDS = ("id", "title", "url", "accessed")
 ID_PATTERN = re.compile(r"^[A-Z][A-Z0-9]+(?:-[A-Z0-9]+)+$")
 CITATION_PATTERN = re.compile(r"\[([A-Z][A-Z0-9]+(?:-[A-Z0-9]+)+)\]")
 
-SKIP_DIRS = {".git", "node_modules", "dist", ".venv", "__pycache__", "cache"}
+SKIP_DIRS = {".git", "node_modules", "dist", ".venv", "__pycache__", "cache", "test-results", "playwright-report"}
+# Generated copies (web/scripts/sync-data.ts) of files that are already scanned at their source.
+SKIP_PATHS = {REPO_ROOT / "web" / "public" / "data"}
 SCAN_SUFFIXES = {".py", ".ts", ".tsx", ".js", ".md", ".yaml", ".yml", ".toml", ".html", ".css"}
 SCAN_NAMES = {".gitignore"}
 SKIP_FILES = {BIBLIOGRAPHY_FILE, REFERENCES_FILE}
@@ -97,7 +99,7 @@ def find_citations(root: Path) -> dict[str, set[str]]:
     """
     citations: dict[str, set[str]] = {}
     for dirpath, dirnames, filenames in os.walk(root):
-        dirnames[:] = sorted(d for d in dirnames if d not in SKIP_DIRS)
+        dirnames[:] = sorted(d for d in dirnames if d not in SKIP_DIRS and Path(dirpath) / d not in SKIP_PATHS)
         for filename in sorted(filenames):
             path = Path(dirpath) / filename
             if (path.suffix not in SCAN_SUFFIXES and path.name not in SCAN_NAMES) or path in SKIP_FILES:
