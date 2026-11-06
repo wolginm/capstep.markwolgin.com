@@ -11,7 +11,9 @@ import type { ReactNode } from 'react'
 import { DataContext, useDataFile, type SiteData } from '../lib/data'
 import type { Catalog, Reference } from '../lib/types'
 
+/** Parse a response body as JSON. @references [MDN-FETCH] */
 const asJson = (response: Response) => response.json()
+/** Read a response body as text. @references [MDN-FETCH] */
 const asText = (response: Response) => response.text()
 
 /**

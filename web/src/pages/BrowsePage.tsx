@@ -43,6 +43,7 @@ function SongBrowser({ catalog }: { catalog: Catalog }) {
   const query = queryFromParams(params)
   const options = useMemo(() => filterOptions(catalog.songs), [catalog])
   const results = querySongs(catalog.songs, query) // 686 rows: cheap enough to recompute per keystroke
+  /** Merge a change into the query and replace the URL. @references [REACT-ROUTER-ROUTING] */
   const update = (change: Partial<SongQuery>) => setParams(paramsFromQuery({ ...query, ...change }), { replace: true })
 
   return (

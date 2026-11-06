@@ -323,10 +323,12 @@ def _pick_title(segment: str, start: int, end: int, before_floor: int, after_cei
             return text, "link", end
 
     def usable(m: re.Match) -> bool:
+        """Whether a bold run can be a title (not generic, not all caps). References: None."""
         text = clean(m.group(1))
         return len(text) > 2 and not is_generic(text) and text != text.upper() and looks_like_title(text)
 
     def title(m: re.Match) -> str:
+        """The bold run as a title, without a format suffix. References: None."""
         return FORMAT_SUFFIX_RE.sub("", clean(m.group(1)))
 
     inside = [m for m in BOLD_RE.finditer(segment, start, end) if usable(m)]

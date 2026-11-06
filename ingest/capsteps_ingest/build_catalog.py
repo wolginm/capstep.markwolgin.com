@@ -425,6 +425,7 @@ def write_reports(root: Path, songs: list[dict], legacy: list[dict], unarchived:
 
     n = len(songs)
     def pct(k: int) -> str:
+        """Format a count with its share of all songs. References: None."""
         return f"{k} ({100 * k / n:.0f}%)" if n else "0"
     kinds = Counter(s["kind"] for s in songs)
     conflicts = [s for s in songs if s["alternate_titles"]]

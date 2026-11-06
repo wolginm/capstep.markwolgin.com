@@ -16,8 +16,8 @@ attribution on top.
 
 ## Status
 
-Phases 0–3 are complete: discovery, the ingestion pipeline (686 playable recordings), and
-the website. See [`plan/PLAN.md`](plan/PLAN.md) for the plan and the current phase.
+Phases 0–4 are complete: discovery, the ingestion pipeline (686 playable recordings), the
+website, and citation and link checks. See [`plan/PLAN.md`](plan/PLAN.md) for the plan and the current phase.
 
 The site was built primarily with an AI model (LLM), with a human developer driving every
 decision; see [`docs/AI_USAGE.md`](docs/AI_USAGE.md).
@@ -30,6 +30,7 @@ Requires Node.js 24 (`nvm use` reads `.nvmrc`) [NVM-SH].
 cd web
 npm install
 npm run dev        # http://localhost:5173/
+npm run lint       # oxlint, then the TypeScript citation lint
 npm test           # unit and component tests (Vitest)
 npx playwright install chromium && npm run test:e2e   # browser smoke test
 npm run build      # static site in web/dist/
@@ -57,7 +58,7 @@ uv run pytest -q
 | `plan/` | Approved project plan |
 | `references/references.yaml` | Single source of truth for every citation |
 | `BIBLIOGRAPHY.md` | Generated from `references.yaml`. Do not edit by hand |
-| `tools/` | Repo tooling (bibliography generator; later the citation lint) |
+| `tools/` | Repo tooling: bibliography generator, citation lint, link checker |
 | `ingest/` | Python pipeline: Wayback CDX → catalog (Phase 1–2) |
 | `data/` | Generated `catalog.json` consumed by the site |
 | `reports/` | Review documents, e.g. `legacy_only_songs.md` |
@@ -72,11 +73,20 @@ Every source consulted or borrowed from is registered in
 docstrings [GOOGLE-PYGUIDE]; TypeScript uses TSDoc comments with a `@references`
 block tag declared in `web/tsdoc.json` [MS-TSDOC] [TSDOC-CONFIG].
 
-Regenerate the bibliography after adding or citing a reference:
+Regenerate the bibliography after adding or citing a reference, and run the checks:
 
 ```bash
 python3 tools/build_bibliography.py          # write BIBLIOGRAPHY.md
-python3 tools/build_bibliography.py --check  # CI: fail if stale
+python3 tools/build_bibliography.py --check  # CI: fail if stale or an unknown ID is cited
+python3 tools/lint_citations.py              # every Python unit has a References: section
+(cd web && npm run lint:citations)           # every TypeScript unit has @references
+python3 tools/check_links.py                 # network: 20 random recordings + every reference URL
+uv run --no-project --with pytest --with pyyaml pytest tools/tests   # tests for the tools
 ```
+
+Both lints require each module, class and named function (methods and nested functions
+too) to cite at least one registered ID or say `None`, and reject IDs missing from the
+registry. The link checker expects each recording's player URL to return audio, so an
+archive error page fails; it sends one small request per second.
 
 Requires Python 3.12+ and PyYAML.

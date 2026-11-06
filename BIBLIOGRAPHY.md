@@ -16,21 +16,21 @@ Git project. *gitignore — Specifies intentionally untracked files to ignore*. 
 Google. *Google Python Style Guide*. Google. <https://google.github.io/styleguide/pyguide.html> (accessed 2026-10-25).
 
 - **Used for:** Docstring layout (Args/Returns/Raises sections); this project adds a References section.
-- **Cited in:** `README.md`, `tools/build_bibliography.py`
+- **Cited in:** `README.md`, `tools/build_bibliography.py`, `tools/lint_citations.py`, `tools/tests/test_lint_citations.py`
 
 ### [IA-CDX-API]
 
 Internet Archive. *Wayback CDX Server API*. GitHub (internetarchive/wayback). <https://github.com/internetarchive/wayback/tree/master/wayback-cdx-server> (accessed 2026-10-25).
 
 - **Used for:** Query parameters (url, matchType, filter, collapse, fl, output, limit) for enumerating captures.
-- **Cited in:** `README.md`, `ingest/capsteps_ingest/__init__.py`, `ingest/capsteps_ingest/build_catalog.py`, `ingest/capsteps_ingest/cdx.py`, `ingest/capsteps_ingest/harvest.py`, `ingest/capsteps_ingest/pages.py`, `ingest/capsteps_ingest/survey.py`, `ingest/tests/test_cdx.py`, `plan/PLAN.md`, `reports/phase1_findings.md`, `reports/phase1_listing_pages.md`, `reports/phase1_survey.md`, `tools/build_bibliography.py`, `web/src/lib/format.ts`
+- **Cited in:** `README.md`, `ingest/capsteps_ingest/__init__.py`, `ingest/capsteps_ingest/build_catalog.py`, `ingest/capsteps_ingest/cdx.py`, `ingest/capsteps_ingest/harvest.py`, `ingest/capsteps_ingest/pages.py`, `ingest/capsteps_ingest/survey.py`, `ingest/tests/test_cdx.py`, `plan/PLAN.md`, `reports/phase1_findings.md`, `reports/phase1_listing_pages.md`, `reports/phase1_survey.md`, `tools/build_bibliography.py`, `tools/lint_citations.py`, `tools/tests/test_lint_citations.py`, `web/src/lib/format.ts`
 
 ### [IA-WAYBACK-URL]
 
 Wikipedia contributors. *Help:Using the Wayback Machine — Wayback Machine URL formats (flags id_, if_, im_)*. Wikipedia, The Free Encyclopedia. <https://en.wikipedia.org/wiki/Help:Using_the_Wayback_Machine> (accessed 2026-10-25).
 
 - **Used for:** Documents the `id_` flag ("Identity - perform no alterations of the original resource, return it as it was archived") used for raw capture URLs (`/web/<ts>id_/<url>`), and the `if_` flag recommended for toolbar-free links to view pages. The Internet Archive's own FAQ once described `id_` but no longer does (Internet Archive Forums, "FAQ On 'id_' Wayback Toolbar Removal", https://archive.org/post/1008502/faq-on-id_-wayback-toolbar-removal), so this community-maintained page is the best available description.
-- **Cited in:** `ingest/capsteps_ingest/build_catalog.py`, `ingest/capsteps_ingest/harvest.py`, `ingest/capsteps_ingest/pages.py`, `ingest/capsteps_ingest/urls.py`, `ingest/tests/test_urls.py`, `plan/PLAN.md`, `reports/phase1_findings.md`, `web/src/lib/format.ts`, `web/src/pages/CopyrightPage.tsx`, `web/src/pages/SongPage.tsx`
+- **Cited in:** `ingest/capsteps_ingest/build_catalog.py`, `ingest/capsteps_ingest/harvest.py`, `ingest/capsteps_ingest/pages.py`, `ingest/capsteps_ingest/urls.py`, `ingest/tests/test_urls.py`, `plan/PLAN.md`, `reports/phase1_findings.md`, `tools/check_links.py`, `web/src/lib/format.ts`, `web/src/pages/CopyrightPage.tsx`, `web/src/pages/SongPage.tsx`
 
 ### [JEST-DOM]
 
@@ -55,7 +55,7 @@ MDN contributors. *encodeURIComponent()*. MDN Web Docs. <https://developer.mozil
 
 MDN contributors. *Fetch API*. MDN Web Docs. <https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API> (accessed 2026-10-26).
 
-- **Cited in:** `web/src/components/DataProvider.tsx`, `web/src/lib/data.ts`
+- **Cited in:** `web/scripts/lint-citations.test.ts`, `web/src/components/DataProvider.tsx`, `web/src/lib/data.ts`
 
 ### [MDN-INTL-COLLATOR]
 
@@ -75,20 +75,20 @@ MDN contributors. *<table>: The Table element (caption, scope, accessibility)*. 
 Microsoft. *TSDoc*. tsdoc.org. <https://tsdoc.org/> (accessed 2026-10-25).
 
 - **Used for:** Comment convention for TypeScript code in web/.
-- **Cited in:** `README.md`
+- **Cited in:** `README.md`, `web/scripts/lint-citations.ts`
 
 ### [NODE-FS]
 
 OpenJS Foundation. *Node.js – File system (fs/promises)*. nodejs.org. <https://nodejs.org/api/fs.html> (accessed 2026-10-26).
 
-- **Cited in:** `web/scripts/sync-data.ts`
+- **Cited in:** `web/scripts/lint-citations.ts`, `web/scripts/sync-data.ts`
 
 ### [NODE-TYPESCRIPT]
 
 OpenJS Foundation. *Node.js – Modules: TypeScript (type stripping)*. nodejs.org. <https://nodejs.org/api/typescript.html> (accessed 2026-10-26).
 
 - **Used for:** Runs web/scripts/sync-data.ts directly on Node 24.
-- **Cited in:** `web/scripts/sync-data.ts`
+- **Cited in:** `web/scripts/lint-citations.ts`, `web/scripts/sync-data.ts`
 
 ### [NVM-SH]
 
@@ -120,7 +120,14 @@ Microsoft. *Playwright Test – Web server*. playwright.dev. <https://playwright
 
 Python Software Foundation. *argparse — Parser for command-line options, arguments and subcommands*. Python 3 Documentation. <https://docs.python.org/3/library/argparse.html> (accessed 2026-10-25).
 
-- **Cited in:** `ingest/capsteps_ingest/build_catalog.py`, `ingest/capsteps_ingest/harvest.py`, `ingest/capsteps_ingest/pages.py`, `ingest/capsteps_ingest/survey.py`, `tools/build_bibliography.py`
+- **Cited in:** `ingest/capsteps_ingest/build_catalog.py`, `ingest/capsteps_ingest/harvest.py`, `ingest/capsteps_ingest/pages.py`, `ingest/capsteps_ingest/survey.py`, `tools/build_bibliography.py`, `tools/check_links.py`, `tools/lint_citations.py`
+
+### [PY-AST]
+
+Python Software Foundation. *ast — Abstract Syntax Trees*. Python 3 Documentation. <https://docs.python.org/3/library/ast.html> (accessed 2026-10-26).
+
+- **Used for:** Citation lint walks every module, class and function and reads its docstring (ast.parse, ast.walk, ast.get_docstring).
+- **Cited in:** `plan/PLAN.md`, `tools/lint_citations.py`, `tools/tests/test_lint_citations.py`
 
 ### [PY-COLLECTIONS]
 
@@ -138,7 +145,7 @@ Python Software Foundation. *csv — CSV File Reading and Writing*. Python 3 Doc
 
 Python Software Foundation. *dataclasses — Data Classes*. Python 3 Documentation. <https://docs.python.org/3/library/dataclasses.html> (accessed 2026-10-25).
 
-- **Cited in:** `ingest/capsteps_ingest/build_catalog.py`, `ingest/capsteps_ingest/extract.py`, `ingest/capsteps_ingest/harvest.py`, `ingest/capsteps_ingest/pages.py`, `ingest/capsteps_ingest/survey.py`, `ingest/capsteps_ingest/urls.py`
+- **Cited in:** `ingest/capsteps_ingest/build_catalog.py`, `ingest/capsteps_ingest/extract.py`, `ingest/capsteps_ingest/harvest.py`, `ingest/capsteps_ingest/pages.py`, `ingest/capsteps_ingest/survey.py`, `ingest/capsteps_ingest/urls.py`, `tools/check_links.py`, `tools/lint_citations.py`
 
 ### [PY-DATETIME]
 
@@ -168,7 +175,7 @@ Python Software Foundation. *html.parser — Simple HTML and XHTML parser*. Pyth
 
 Python Software Foundation. *json — JSON encoder and decoder*. Python 3 Documentation. <https://docs.python.org/3/library/json.html> (accessed 2026-10-25).
 
-- **Cited in:** `ingest/capsteps_ingest/build_catalog.py`, `ingest/capsteps_ingest/cdx.py`
+- **Cited in:** `ingest/capsteps_ingest/build_catalog.py`, `ingest/capsteps_ingest/cdx.py`, `tools/check_links.py`
 
 ### [PY-OS-WALK]
 
@@ -180,13 +187,20 @@ Python Software Foundation. *os.walk — Miscellaneous operating system interfac
 
 Python Software Foundation. *pathlib — Object-oriented filesystem paths*. Python 3 Documentation. <https://docs.python.org/3/library/pathlib.html> (accessed 2026-10-25).
 
-- **Cited in:** `ingest/capsteps_ingest/cdx.py`, `ingest/capsteps_ingest/urls.py`, `tools/build_bibliography.py`
+- **Cited in:** `ingest/capsteps_ingest/cdx.py`, `ingest/capsteps_ingest/urls.py`, `tools/build_bibliography.py`, `tools/lint_citations.py`
+
+### [PY-RANDOM]
+
+Python Software Foundation. *random — Generate pseudo-random numbers*. Python 3 Documentation. <https://docs.python.org/3/library/random.html> (accessed 2026-10-26).
+
+- **Used for:** Link checker draws a reproducible, seeded sample of recordings (random.Random.sample).
+- **Cited in:** `tools/check_links.py`, `tools/tests/test_check_links.py`
 
 ### [PY-RE]
 
 Python Software Foundation. *re — Regular expression operations*. Python 3 Documentation. <https://docs.python.org/3/library/re.html> (accessed 2026-10-25).
 
-- **Cited in:** `ingest/capsteps_ingest/build_catalog.py`, `ingest/capsteps_ingest/extract.py`, `ingest/capsteps_ingest/pages.py`, `ingest/capsteps_ingest/survey.py`, `tools/build_bibliography.py`
+- **Cited in:** `ingest/capsteps_ingest/build_catalog.py`, `ingest/capsteps_ingest/extract.py`, `ingest/capsteps_ingest/pages.py`, `ingest/capsteps_ingest/survey.py`, `tools/build_bibliography.py`, `tools/lint_citations.py`, `tools/tests/test_lint_citations.py`
 
 ### [PY-SQLITE3]
 
@@ -198,7 +212,7 @@ Python Software Foundation. *sqlite3 — DB-API 2.0 interface for SQLite databas
 
 Python Software Foundation. *time — Time access and conversions*. Python 3 Documentation. <https://docs.python.org/3/library/time.html> (accessed 2026-10-25).
 
-- **Cited in:** `ingest/capsteps_ingest/cdx.py`
+- **Cited in:** `ingest/capsteps_ingest/cdx.py`, `tools/check_links.py`, `tools/tests/test_check_links.py`
 
 ### [PY-URLLIB-PARSE]
 
@@ -210,13 +224,13 @@ Python Software Foundation. *urllib.parse — Parse URLs into components*. Pytho
 
 Python Software Foundation. *urllib.request — Extensible library for opening URLs*. Python 3 Documentation. <https://docs.python.org/3/library/urllib.request.html> (accessed 2026-10-25).
 
-- **Cited in:** `ingest/capsteps_ingest/cdx.py`
+- **Cited in:** `ingest/capsteps_ingest/cdx.py`, `tools/check_links.py`
 
 ### [PYTEST-DOCS]
 
 pytest-dev. *pytest documentation*. docs.pytest.org. <https://docs.pytest.org/en/stable/> (accessed 2026-10-25).
 
-- **Cited in:** `ingest/tests/test_build_catalog.py`, `ingest/tests/test_cdx.py`, `ingest/tests/test_extract.py`, `ingest/tests/test_pages.py`, `ingest/tests/test_survey.py`, `ingest/tests/test_urls.py`
+- **Cited in:** `ingest/tests/test_build_catalog.py`, `ingest/tests/test_cdx.py`, `ingest/tests/test_extract.py`, `ingest/tests/test_pages.py`, `ingest/tests/test_survey.py`, `ingest/tests/test_urls.py`, `tools/tests/conftest.py`, `tools/tests/test_check_links.py`, `tools/tests/test_lint_citations.py`
 
 ### [PYYAML-DOCS]
 
@@ -280,11 +294,25 @@ M. Duerst, L. Masinter, J. Zawinski. *RFC 6068: The 'mailto' URI Scheme*. IETF. 
 - **Used for:** Pre-filled takedown subject lines (percent-encoded `subject=` header field).
 - **Cited in:** `web/src/lib/format.test.ts`, `web/src/lib/format.ts`, `web/src/pages/CopyrightPage.tsx`
 
+### [RFC-9110]
+
+R. Fielding, M. Nottingham, J. Reschke. *RFC 9110: HTTP Semantics*. IETF. <https://www.rfc-editor.org/rfc/rfc9110> (accessed 2026-10-26).
+
+- **Used for:** Link checker asks for one byte (Range, §14.2) and accepts 200 or 206 Partial Content (§15.3.7).
+- **Cited in:** `plan/PLAN.md`, `tools/check_links.py`, `tools/tests/test_check_links.py`
+
 ### [TESTING-LIBRARY-REACT]
 
 Testing Library contributors. *React Testing Library – Introduction*. testing-library.com. <https://testing-library.com/docs/react-testing-library/intro/> (accessed 2026-10-26).
 
 - **Cited in:** `web/src/pages/pages.test.tsx`, `web/src/test/render.tsx`, `web/src/test/setup.ts`
+
+### [TS-COMPILER-API]
+
+*Using the Compiler API*. Microsoft (TypeScript wiki). <https://github.com/microsoft/TypeScript/wiki/Using-the-Compiler-API> (accessed 2026-10-26).
+
+- **Used for:** TypeScript citation lint parses sources with ts.createSourceFile and reads TSDoc tags with ts.getJSDocTags.
+- **Cited in:** `plan/PLAN.md`, `web/scripts/lint-citations.ts`
 
 ### [TS-TSCONFIG]
 
@@ -297,7 +325,7 @@ Microsoft. *TSConfig Reference*. typescriptlang.org. <https://www.typescriptlang
 Microsoft. *@microsoft/tsdoc-config (tsdoc.json custom tag definitions)*. tsdoc.org. <https://tsdoc.org/pages/packages/tsdoc-config/> (accessed 2026-10-26).
 
 - **Used for:** Declares the custom `@references` block tag used in every TSDoc comment.
-- **Cited in:** `README.md`
+- **Cited in:** `README.md`, `web/scripts/lint-citations.ts`
 
 ### [UV-DOCS]
 
@@ -318,7 +346,7 @@ Vite contributors. *Static Asset Handling – the public directory*. vite.dev. <
 Vite contributors. *Shared Options – Vite configuration (base, publicDir)*. vite.dev. <https://vite.dev/config/shared-options.html> (accessed 2026-10-26).
 
 - **Used for:** `base: './'` so the build runs from any sub-path (GitHub Pages or self-hosted).
-- **Cited in:** `web/src/lib/data.ts`, `web/vite.config.ts`
+- **Cited in:** `web/scripts/lint-citations.test.ts`, `web/scripts/lint-citations.ts`, `web/src/lib/data.ts`, `web/vite.config.ts`
 
 ### [VITE-ENV]
 
@@ -337,7 +365,7 @@ Vite contributors. *Deploying a Static Site*. vite.dev. <https://vite.dev/guide/
 
 Vitest contributors. *Configuring Vitest*. vitest.dev. <https://vitest.dev/config/> (accessed 2026-10-26).
 
-- **Cited in:** `web/scripts/sync-data.test.ts`, `web/src/lib/format.test.ts`, `web/src/lib/search.test.ts`, `web/vite.config.ts`
+- **Cited in:** `web/scripts/lint-citations.test.ts`, `web/scripts/sync-data.test.ts`, `web/src/lib/format.test.ts`, `web/src/lib/search.test.ts`, `web/vite.config.ts`
 
 ### [WAYBACK-CAPSTEPS-HOME]
 
@@ -386,4 +414,4 @@ Wikipedia contributors. *Capitol Steps*. Wikipedia, The Free Encyclopedia. <http
 Eemeli Aro. *yaml (npm package) – parse()*. eemeli.org. <https://eemeli.org/yaml/> (accessed 2026-10-26).
 
 - **Used for:** Converts references/references.yaml to JSON for the Bibliography page (web/scripts/sync-data.ts).
-- **Cited in:** `web/scripts/sync-data.test.ts`, `web/scripts/sync-data.ts`
+- **Cited in:** `web/scripts/lint-citations.ts`, `web/scripts/sync-data.test.ts`, `web/scripts/sync-data.ts`

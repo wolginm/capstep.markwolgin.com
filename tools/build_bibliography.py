@@ -196,7 +196,7 @@ def main(argv: list[str] | None = None) -> int:
     known = {entry["id"] for entry in entries}
     unknown = {ref_id: files for ref_id, files in citations.items() if ref_id not in known}
     for ref_id, files in sorted(unknown.items()):
-        print(f"warning: [{ref_id}] cited in {', '.join(sorted(files))} but not in references.yaml",
+        print(f"error: [{ref_id}] cited in {', '.join(sorted(files))} but not in references.yaml",
               file=sys.stderr)
 
     rendered = render_bibliography(entries, citations)
@@ -205,11 +205,11 @@ def main(argv: list[str] | None = None) -> int:
         if current != rendered:
             print("BIBLIOGRAPHY.md is out of date; run tools/build_bibliography.py", file=sys.stderr)
             return 1
-        return 0
+        return 1 if unknown else 0
 
     BIBLIOGRAPHY_FILE.write_text(rendered, encoding="utf-8")
     print(f"wrote {BIBLIOGRAPHY_FILE.relative_to(REPO_ROOT)} ({len(entries)} references)")
-    return 0
+    return 1 if unknown else 0
 
 
 if __name__ == "__main__":

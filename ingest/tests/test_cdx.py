@@ -31,6 +31,7 @@ def make_client(tmp_path, responses):
     calls = []
 
     def fetch(url):
+        """Record the URL and return or raise the next canned response. References: None."""
         calls.append(url)
         item = responses.pop(0)
         if isinstance(item, Exception):

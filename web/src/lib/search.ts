@@ -77,6 +77,7 @@ function matchesText(song: Song, words: string[]): boolean {
  */
 export function querySongs(songs: Song[], query: SongQuery): Song[] {
   const words = fold(query.text).split(' ').filter(Boolean)
+  /** Compare by title, ignoring a leading article. @references [MDN-INTL-COLLATOR] */
   const byTitle = (a: Song, b: Song) => collator.compare(titleSortKey(a.title), titleSortKey(b.title))
   const compare: Record<SortKey, (a: Song, b: Song) => number> = {
     title: byTitle,

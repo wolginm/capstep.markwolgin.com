@@ -1,6 +1,6 @@
 # Capitol Steps Preservation Site — Project Plan
 
-**Status:** Phase 3 COMPLETE (2026-10-26). Phase 4 in progress (approved 2026-10-26).
+**Status:** Phase 4 COMPLETE (2026-10-26), pending the developer's commit approval. Phase 5 awaits approval.
 **Author:** Claude (agent), for wolginm
 **Date:** 2026-10-25 (revised 2026-10-25)
 
@@ -199,6 +199,24 @@ continue.
   section, or cites an ID missing from `references.yaml` (Python: AST walk;
   TypeScript: TSDoc `@see` / custom tag check).
 - Link checker: sample Wayback URLs in the catalog and confirm they still resolve.
+
+#### Phase 4 implementation notes (2026-10-26)
+- **Python:** `tools/lint_citations.py` walks every module, class, function and method in
+  `ingest/` and `tools/`, nested functions included [PY-AST]. **TypeScript:**
+  `web/scripts/lint-citations.ts` uses the TypeScript compiler API [TS-COMPILER-API] to
+  check each file header, class, method, function declaration and named function
+  variable, at any depth, for the `@references` tag. Anonymous callbacks are not methods
+  and are not checked.
+- Both require at least one registered `[ID]` or `None`, and reject unknown IDs. They run
+  with `python3 tools/lint_citations.py` and `npm run lint` (which now includes the lint).
+- `tools/build_bibliography.py` now exits 1 when an unregistered ID is cited anywhere in
+  the repo, as its docstring already said; before, it only printed a warning.
+- `tools/check_links.py` requests one byte of each sampled recording's player URL (default
+  20, seeded and reproducible, `--all` for every one) and expects 200/206 with an audio
+  type, so a Wayback error page counts as a failure [RFC-9110]. It also checks every
+  reference URL. Requests are sequential and spaced 1 s apart, with one retry. It needs the
+  network, so it is not part of the unit tests. First run: 83 of 83 links OK.
+- Tool tests: `uv run --no-project --with pytest --with pyyaml pytest tools/tests`.
 
 ### Phase 5 — Deployment
 - **GitHub Pages:** GitHub Actions workflow (lint, test, build, deploy to Pages).

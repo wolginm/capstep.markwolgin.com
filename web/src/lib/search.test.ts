@@ -9,6 +9,7 @@ import { describe, expect, it } from 'vitest'
 import { SONGS, makeSong } from '../test/fixtures'
 import { EMPTY_QUERY, filterOptions, fold, querySongs } from './search'
 
+/** The titles of `songs`, in order. @references None. */
 const titles = (songs: { title: string }[]) => songs.map((s) => s.title)
 
 describe('search', () => {

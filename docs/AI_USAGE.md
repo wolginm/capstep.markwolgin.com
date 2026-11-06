@@ -101,3 +101,16 @@ is updated at the end of every phase.
   sub-path. Caught its own mistakes in testing: a comment closed early by a `*/` inside a
   URL, and an invented fallback copyright line, removed so only archived notices are shown.
   36 unit/component tests and 2 browser smoke tests pass.
+
+### Phase 4 — Citation enforcement and QA (2026-10-26)
+- **Human:** reviewed the running site, approved the Phase 3 commit and Phase 4.
+- **LLM:** wrote two citation lints, one for Python (`tools/lint_citations.py`) and one for
+  TypeScript (`web/scripts/lint-citations.ts`). Each fails if a file, class or named
+  function lacks a references section, or cites a source missing from the bibliography.
+  They found 11 small nested helpers without one, which were then documented. Also fixed
+  the bibliography tool, which only warned about unknown citations although it was meant
+  to fail. Wrote a polite link checker. Its first run found all 83 links working (20
+  sampled recordings, which must return audio rather than an error page, and every
+  reference). Caught its own mistake in testing: the lint at first took the word
+  "References:" written in prose for a real section, so one docstring passed by accident.
+  24 tool tests and 49 web tests pass.

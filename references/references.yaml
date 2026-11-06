@@ -466,3 +466,34 @@ references:
     url: https://www.w3.org/TR/WCAG22/
     accessed: 2026-10-26
     note: Contrast (1.4.3), keyboard access (2.1.1), bypass blocks / skip link (2.4.1), focus visible (2.4.7).
+
+  - id: PY-AST
+    author: Python Software Foundation
+    title: ast — Abstract Syntax Trees
+    publisher: Python 3 Documentation
+    url: https://docs.python.org/3/library/ast.html
+    accessed: 2026-10-26
+    note: Citation lint walks every module, class and function and reads its docstring (ast.parse, ast.walk, ast.get_docstring).
+
+  - id: TS-COMPILER-API
+    title: Using the Compiler API
+    publisher: Microsoft (TypeScript wiki)
+    url: https://github.com/microsoft/TypeScript/wiki/Using-the-Compiler-API
+    accessed: 2026-10-26
+    note: TypeScript citation lint parses sources with ts.createSourceFile and reads TSDoc tags with ts.getJSDocTags.
+
+  - id: RFC-9110
+    author: R. Fielding, M. Nottingham, J. Reschke
+    title: "RFC 9110: HTTP Semantics"
+    publisher: IETF
+    url: https://www.rfc-editor.org/rfc/rfc9110
+    accessed: 2026-10-26
+    note: Link checker asks for one byte (Range, §14.2) and accepts 200 or 206 Partial Content (§15.3.7).
+
+  - id: PY-RANDOM
+    author: Python Software Foundation
+    title: random — Generate pseudo-random numbers
+    publisher: Python 3 Documentation
+    url: https://docs.python.org/3/library/random.html
+    accessed: 2026-10-26
+    note: Link checker draws a reproducible, seeded sample of recordings (random.Random.sample).
