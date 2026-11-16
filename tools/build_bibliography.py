@@ -41,8 +41,8 @@ CITATION_PATTERN = re.compile(r"\[([A-Z][A-Z0-9]+(?:-[A-Z0-9]+)+)\]")
 SKIP_DIRS = {".git", "node_modules", "dist", ".venv", "__pycache__", "cache", "test-results", "playwright-report"}
 # Generated copies (web/scripts/sync-data.ts) of files that are already scanned at their source.
 SKIP_PATHS = {REPO_ROOT / "web" / "public" / "data"}
-SCAN_SUFFIXES = {".py", ".ts", ".tsx", ".js", ".md", ".yaml", ".yml", ".toml", ".html", ".css"}
-SCAN_NAMES = {".gitignore"}
+SCAN_SUFFIXES = {".py", ".ts", ".tsx", ".js", ".md", ".yaml", ".yml", ".toml", ".html", ".css", ".conf"}
+SCAN_NAMES = {".gitignore", "Caddyfile"}
 SKIP_FILES = {BIBLIOGRAPHY_FILE, REFERENCES_FILE}
 
 

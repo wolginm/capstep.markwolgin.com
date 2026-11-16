@@ -16,8 +16,8 @@ attribution on top.
 
 ## Status
 
-Phases 0–4 are complete: discovery, the ingestion pipeline (686 playable recordings), the
-website, and citation and link checks. See [`plan/PLAN.md`](plan/PLAN.md) for the plan and the current phase.
+Phases 0–5 are complete: discovery, the ingestion pipeline (686 playable recordings), the
+website, citation and link checks, and deployment. See [`plan/PLAN.md`](plan/PLAN.md) for the plan.
 
 The site was built primarily with an AI model (LLM), with a human developer driving every
 decision; see [`docs/AI_USAGE.md`](docs/AI_USAGE.md).
@@ -42,6 +42,15 @@ The build uses relative paths and hash-based routes, so `web/dist/` can be serve
 from any static host or sub-path, including GitHub Pages [VITE-STATIC-DEPLOY]
 [REACT-ROUTER-HASHROUTER].
 
+## Deploying
+
+GitHub Actions runs every check on each push and pull request, deploys `main` to GitHub
+Pages, and checks links once a month (`.github/workflows/`). To self-host, copy
+`web/dist/` to any static web server; sample nginx and Caddy configs are in `deploy/`.
+Setup steps for both are in [`docs/DEPLOY.md`](docs/DEPLOY.md) [GH-PAGES-CUSTOM-WORKFLOW].
+The public site is <https://capstep.markwolgin.com/>, a custom domain on GitHub Pages
+[GH-PAGES-CUSTOM-DOMAIN].
+
 ## Rebuilding the catalog
 
 ```bash
@@ -64,6 +73,9 @@ uv run pytest -q
 | `reports/` | Review documents, e.g. `legacy_only_songs.md` |
 | `web/` | React + TypeScript (Vite) static site |
 | `docs/AI_USAGE.md` | Log of how the LLM was used; shown on the site's AI Disclosure page |
+| `docs/DEPLOY.md` | GitHub Pages setup and self-hosting guide |
+| `deploy/` | Sample nginx and Caddy configs for self-hosting |
+| `.github/workflows/` | CI + Pages deployment, and the monthly link check |
 
 ## Citations
 

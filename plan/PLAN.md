@@ -1,6 +1,6 @@
 # Capitol Steps Preservation Site — Project Plan
 
-**Status:** Phase 4 COMPLETE (2026-10-26), pending the developer's commit approval. Phase 5 awaits approval.
+**Status:** Phase 5 COMPLETE (2026-11-06; custom-domain addendum 2026-11-16). Waiting on the developer to commit, push to `wolginm/capstep.markwolgin.com`, and set up Pages and DNS. All planned phases are done.
 **Author:** Claude (agent), for wolginm
 **Date:** 2026-10-25 (revised 2026-10-25)
 
@@ -222,6 +222,69 @@ continue.
 - **GitHub Pages:** GitHub Actions workflow (lint, test, build, deploy to Pages).
 - **Self-hosted:** document copying `dist/` to any static web server, with a sample
   nginx/Caddy config.
+
+#### Phase 5 detailed plan (2026-11-06, approved 2026-11-06)
+- **Link checker cadence (developer decision, 2026-11-06):** monthly, not on every push.
+  The archived captures are not expected to change.
+- **`.github/workflows/deploy.yml`:** runs on push to `main`, on pull requests (checks
+  only, no deploy) and by hand (`workflow_dispatch`).
+  1. *check-and-build job:* checkout; Node from `.nvmrc`; uv for Python. Runs the Python
+     citation lint, `build_bibliography.py --check`, the tool and ingest tests, then in
+     `web/`: `npm ci`, `npm run lint` (oxlint + TS citation lint), `typecheck`, `test`,
+     `build`, and the Playwright smoke test (Chromium only, archive requests still
+     blocked). Uploads `web/dist/` as the Pages artifact.
+  2. *deploy job:* `main` only, needs job 1, uses the official Pages deploy action with
+     only the permissions it needs (`pages: write`, `id-token: write`).
+  - CI never runs ingestion and never contacts the Internet Archive. It builds from the
+    committed `data/catalog.json`.
+- **`.github/workflows/links.yml`:** monthly cron, plus by hand. Runs
+  `tools/check_links.py` with its default sample of 20 recordings and every reference URL,
+  still 1 request/s. A failed run makes GitHub send its normal failure email. No
+  auto-filed issues.
+- **Self-hosting:** `docs/DEPLOY.md` covers building, copying `dist/` to any static
+  server, and the sub-path and hash-routing notes (no rewrites needed). It comes with
+  sample `deploy/nginx.conf` and `deploy/Caddyfile`, setting short cache times for
+  `data/*.json` and long ones for hashed assets.
+- **Citations:** new `references.yaml` entries for GitHub Actions workflow syntax, the
+  schedule trigger, Pages custom workflows, each action used, and the nginx and Caddy docs.
+  Each is cited in the workflow and config file headers, as `.gitignore` already does.
+  Action versions are pinned to their current major release, checked at implementation
+  time.
+- **Housekeeping:** delete the leftover `references/package*.json` files and the empty
+  `references/node_modules/` from disk. Their removal from git is already staged.
+  Update the README, `docs/AI_USAGE.md` and this plan.
+- **Developer steps (not done by the agent):** create the GitHub repository, add it as a
+  remote, push, and set *Settings → Pages → Source* to "GitHub Actions". The agent does
+  not push or change repository settings.
+
+#### Phase 5 implementation notes (2026-11-06)
+- Actions pinned to their current major releases, looked up when the files were
+  written: `checkout@v7`, `setup-node@v7`, `setup-uv@v7`, `upload-pages-artifact@v5`,
+  `deploy-pages@v5`.
+- The deploy decision is made in the workflow (`main` only, never pull requests).
+  `docs/DEPLOY.md` also recommends a main-only branch rule on the `github-pages`
+  environment, as GitHub's docs suggest; GitHub does not add one by itself
+  [GH-PAGES-CUSTOM-WORKFLOW].
+- The link check runs at 14:17 UTC on the 1st, off the hour as GitHub recommends. Each
+  run uses a new random seed, printed in the log. GitHub disables schedules in public
+  repositories after 60 days without activity; `docs/DEPLOY.md` says how to re-enable
+  it [GH-ACTIONS-EVENTS].
+- `tools/build_bibliography.py` now also scans `.conf` files and `Caddyfile` for citations.
+- Not verified locally: `nginx -t`, `caddy validate` and actionlint could not run in the
+  agent's sandbox. The workflows were checked by YAML parsing and by running each of
+  their commands locally.
+
+#### Phase 5 addendum: custom domain (2026-11-16)
+- **Developer decisions:** the repository is `git@github.com:wolginm/capstep.markwolgin.com.git`.
+  The public site is `https://capstep.markwolgin.com/`, served by GitHub Pages.
+- **No code change:** the relative-path, hash-routed build already works at a domain root.
+  The workflow deploys through a custom Actions workflow, so no `CNAME` file is needed
+  [GH-PAGES-CUSTOM-DOMAIN].
+- `docs/DEPLOY.md` lists the developer's steps in order: verify `markwolgin.com` with a TXT
+  record [GH-PAGES-VERIFY-DOMAIN], add the custom domain in Settings → Pages, create the DNS
+  record `CNAME capstep → wolginm.github.io`, then enforce HTTPS [GH-PAGES-HTTPS]
+  [GH-PAGES-DOMAIN-TROUBLESHOOTING]. The agent changes no DNS or GitHub settings, and does
+  not add the remote or push.
 
 ## 6. Copyright and attribution approach
 

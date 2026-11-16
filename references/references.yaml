@@ -497,3 +497,203 @@ references:
     url: https://docs.python.org/3/library/random.html
     accessed: 2026-10-26
     note: Link checker draws a reproducible, seeded sample of recordings (random.Random.sample).
+
+  - id: GH-ACTIONS-WORKFLOW-SYNTAX
+    author: GitHub
+    title: Workflow syntax for GitHub Actions
+    publisher: GitHub Docs
+    url: https://docs.github.com/en/actions/reference/workflows-and-actions/workflow-syntax
+    accessed: 2026-11-06
+    note: Structure of the CI workflows (jobs, needs, if, permissions, concurrency, defaults.run.working-directory).
+
+  - id: GH-ACTIONS-EVENTS
+    author: GitHub
+    title: Events that trigger workflows
+    publisher: GitHub Docs
+    url: https://docs.github.com/en/actions/reference/workflows-and-actions/events-that-trigger-workflows
+    accessed: 2026-11-06
+    note: push, pull_request, workflow_dispatch and the monthly schedule (POSIX cron, UTC) used by the workflows.
+
+  - id: GH-ACTIONS-SECURE-USE
+    author: GitHub
+    title: Secure use reference
+    publisher: GitHub Docs
+    url: https://docs.github.com/en/actions/reference/security/secure-use
+    accessed: 2026-11-06
+    note: Least-privilege GITHUB_TOKEN permissions, set per workflow and per job.
+
+  - id: GH-PAGES-CUSTOM-WORKFLOW
+    author: GitHub
+    title: Using custom workflows with GitHub Pages
+    publisher: GitHub Docs
+    url: https://docs.github.com/en/pages/getting-started-with-github-pages/using-custom-workflows-with-github-pages
+    accessed: 2026-11-06
+    note: Build-then-deploy job pair, the github-pages environment (with the recommended main-only deployment branch rule) and the pages/id-token permissions.
+
+  - id: GH-PAGES-PUBLISHING-SOURCE
+    author: GitHub
+    title: Configuring a publishing source for your GitHub Pages site
+    publisher: GitHub Docs
+    url: https://docs.github.com/en/pages/getting-started-with-github-pages/configuring-a-publishing-source-for-your-github-pages-site
+    accessed: 2026-11-06
+    note: One-time repository setting, Pages source = "GitHub Actions", documented in docs/DEPLOY.md.
+
+  - id: GH-PAGES-CUSTOM-DOMAIN
+    author: GitHub
+    title: Managing a custom domain for your GitHub Pages site
+    publisher: GitHub Docs
+    url: https://docs.github.com/en/pages/configuring-a-custom-domain-for-your-github-pages-site/managing-a-custom-domain-for-your-github-pages-site
+    accessed: 2026-11-16
+    note: Subdomain setup for capstep.markwolgin.com. Add the domain in Settings -> Pages before creating DNS; a CNAME record to wolginm.github.io (not *.pages.github.io); no CNAME file needed when deploying with a custom Actions workflow; avoid wildcard DNS records.
+
+  - id: GH-PAGES-VERIFY-DOMAIN
+    author: GitHub
+    title: Verifying your custom domain for GitHub Pages
+    publisher: GitHub Docs
+    url: https://docs.github.com/en/pages/configuring-a-custom-domain-for-your-github-pages-site/verifying-your-custom-domain-for-github-pages
+    accessed: 2026-11-16
+    note: Account-level domain verification with a _github-pages-challenge-wolginm TXT record, which prevents domain takeover. Verifying markwolgin.com also covers its immediate subdomains.
+
+  - id: GH-PAGES-HTTPS
+    author: GitHub
+    title: Securing your GitHub Pages site with HTTPS
+    publisher: GitHub Docs
+    url: https://docs.github.com/en/pages/getting-started-with-github-pages/securing-your-github-pages-site-with-https
+    accessed: 2026-11-16
+    note: The "Enforce HTTPS" setting for a custom domain, and how to restart certificate provisioning.
+
+  - id: GH-PAGES-DOMAIN-TROUBLESHOOTING
+    author: GitHub
+    title: Troubleshooting custom domains and GitHub Pages
+    publisher: GitHub Docs
+    url: https://docs.github.com/en/pages/configuring-a-custom-domain-for-your-github-pages-site/troubleshooting-custom-domains-and-github-pages
+    accessed: 2026-11-16
+    note: HTTPS can take up to an hour after the domain is configured; if CAA records exist, one must allow letsencrypt.org.
+
+  - id: GHA-CHECKOUT
+    author: GitHub
+    title: actions/checkout
+    publisher: GitHub
+    url: https://github.com/actions/checkout
+    accessed: 2026-11-06
+    note: Checks out the repository in CI (v7, the current major release at the time of writing).
+
+  - id: GHA-SETUP-NODE
+    author: GitHub
+    title: actions/setup-node
+    publisher: GitHub
+    url: https://github.com/actions/setup-node
+    accessed: 2026-11-06
+    note: Installs the Node version in .nvmrc (node-version-file) and caches npm (v7).
+
+  - id: GHA-SETUP-UV
+    author: Astral
+    title: astral-sh/setup-uv
+    publisher: GitHub
+    url: https://github.com/astral-sh/setup-uv
+    accessed: 2026-11-06
+    note: Installs uv and a Python 3.12 interpreter in CI (v7).
+
+  - id: UV-GITHUB-ACTIONS
+    author: Astral
+    title: Using uv in GitHub Actions
+    publisher: uv documentation
+    url: https://docs.astral.sh/uv/guides/integration/github/
+    accessed: 2026-11-06
+    note: Recommended setup-uv usage, python-version input and uv run --locked in CI.
+
+  - id: GHA-UPLOAD-PAGES-ARTIFACT
+    author: GitHub
+    title: actions/upload-pages-artifact
+    publisher: GitHub
+    url: https://github.com/actions/upload-pages-artifact
+    accessed: 2026-11-06
+    note: Packages web/dist/ as the Pages artifact (v5).
+
+  - id: GHA-DEPLOY-PAGES
+    author: GitHub
+    title: actions/deploy-pages
+    publisher: GitHub
+    url: https://github.com/actions/deploy-pages
+    accessed: 2026-11-06
+    note: Publishes the Pages artifact and reports the page_url output (v5).
+
+  - id: NPM-CI
+    author: npm, Inc.
+    title: npm ci
+    publisher: npm Docs
+    url: https://docs.npmjs.com/cli/v11/commands/npm-ci
+    accessed: 2026-11-06
+    note: Clean, lockfile-exact install of web dependencies in CI.
+
+  - id: PLAYWRIGHT-CI
+    author: Microsoft
+    title: Continuous Integration
+    publisher: Playwright documentation
+    url: https://playwright.dev/docs/ci
+    accessed: 2026-11-06
+    note: Installing a browser with its system dependencies (playwright install --with-deps chromium) on GitHub Actions.
+
+  - id: NGINX-CORE
+    author: NGINX
+    title: Module ngx_http_core_module
+    publisher: nginx.org
+    url: https://nginx.org/en/docs/http/ngx_http_core_module.html
+    accessed: 2026-11-06
+    note: server, root, location, try_files and default_type in the sample nginx config.
+
+  - id: NGINX-HEADERS
+    author: NGINX
+    title: Module ngx_http_headers_module
+    publisher: nginx.org
+    url: https://nginx.org/en/docs/http/ngx_http_headers_module.html
+    accessed: 2026-11-06
+    note: add_header for Cache-Control in the sample nginx config (a location-level add_header replaces server-level ones).
+
+  - id: NGINX-GZIP
+    author: NGINX
+    title: Module ngx_http_gzip_module
+    publisher: nginx.org
+    url: https://nginx.org/en/docs/http/ngx_http_gzip_module.html
+    accessed: 2026-11-06
+    note: gzip compression of the catalog JSON and assets in the sample nginx config.
+
+  - id: CADDY-FILE-SERVER
+    author: Caddy
+    title: file_server (Caddyfile directive)
+    publisher: Caddy documentation
+    url: https://caddyserver.com/docs/caddyfile/directives/file_server
+    accessed: 2026-11-06
+    note: Static file serving and root in the sample Caddyfile.
+
+  - id: CADDY-HEADER
+    author: Caddy
+    title: header (Caddyfile directive)
+    publisher: Caddy documentation
+    url: https://caddyserver.com/docs/caddyfile/directives/header
+    accessed: 2026-11-06
+    note: Cache-Control headers in the sample Caddyfile.
+
+  - id: CADDY-ENCODE
+    author: Caddy
+    title: encode (Caddyfile directive)
+    publisher: Caddy documentation
+    url: https://caddyserver.com/docs/caddyfile/directives/encode
+    accessed: 2026-11-06
+    note: zstd/gzip response compression in the sample Caddyfile.
+
+  - id: CADDY-MATCHERS
+    author: Caddy
+    title: Request matchers (Caddyfile)
+    publisher: Caddy documentation
+    url: https://caddyserver.com/docs/caddyfile/matchers
+    accessed: 2026-11-06
+    note: Named path matchers (@assets, @notAssets) that select a cache policy in the sample Caddyfile.
+
+  - id: MDN-CACHE-CONTROL
+    author: MDN contributors
+    title: Cache-Control header
+    publisher: MDN Web Docs
+    url: https://developer.mozilla.org/en-US/docs/Web/HTTP/Reference/Headers/Cache-Control
+    accessed: 2026-11-06
+    note: immutable/max-age for content-hashed assets, no-cache for index.html and data/ so updates show up.

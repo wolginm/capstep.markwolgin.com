@@ -1,0 +1,35 @@
+# Sample Caddyfile for a self-hosted copy of the site.
+#
+# Copy the contents of web/dist/ to the `root` directory below and replace the site
+# address with your domain. Caddy then obtains and renews a TLS certificate itself.
+# For a quick local test use `:8080` as the address instead. See docs/DEPLOY.md.
+#
+# No rewrite rules are needed: the site uses hash-based routes (/#/song/401k), so
+# the server only ever receives requests for real files [REACT-ROUTER-HASHROUTER].
+# No audio is served from here; the player streams from web.archive.org.
+#
+# Caching [MDN-CACHE-CONTROL]:
+#   /assets/*      file names contain a content hash, so they can be cached for a year.
+#   everything else (index.html, /data/*)  no-cache: browsers revalidate, so a new
+#                  build or catalog shows up immediately.
+#
+# References:
+#   [CADDY-FILE-SERVER] root, file_server, https://caddyserver.com/docs/caddyfile/directives/file_server
+#   [CADDY-HEADER] https://caddyserver.com/docs/caddyfile/directives/header
+#   [CADDY-ENCODE] https://caddyserver.com/docs/caddyfile/directives/encode
+#   [CADDY-MATCHERS] named path matchers, https://caddyserver.com/docs/caddyfile/matchers
+#   [MDN-CACHE-CONTROL] https://developer.mozilla.org/en-US/docs/Web/HTTP/Reference/Headers/Cache-Control
+#   [VITE-STATIC-DEPLOY] https://vite.dev/guide/static-deploy
+
+capsteps.example.org {
+	root * /var/www/capitol-steps
+	encode zstd gzip
+
+	@assets path /assets/*
+	header @assets Cache-Control "public, max-age=31536000, immutable"
+
+	@notAssets not path /assets/*
+	header @notAssets Cache-Control "no-cache"
+
+	file_server
+}

@@ -4,6 +4,132 @@
 
 Every source consulted, quoted, or borrowed from in this project. Cite an entry in code or docs by writing its ID in square brackets.
 
+### [CADDY-ENCODE]
+
+Caddy. *encode (Caddyfile directive)*. Caddy documentation. <https://caddyserver.com/docs/caddyfile/directives/encode> (accessed 2026-11-06).
+
+- **Used for:** zstd/gzip response compression in the sample Caddyfile.
+- **Cited in:** `deploy/Caddyfile`
+
+### [CADDY-FILE-SERVER]
+
+Caddy. *file_server (Caddyfile directive)*. Caddy documentation. <https://caddyserver.com/docs/caddyfile/directives/file_server> (accessed 2026-11-06).
+
+- **Used for:** Static file serving and root in the sample Caddyfile.
+- **Cited in:** `deploy/Caddyfile`, `docs/DEPLOY.md`
+
+### [CADDY-HEADER]
+
+Caddy. *header (Caddyfile directive)*. Caddy documentation. <https://caddyserver.com/docs/caddyfile/directives/header> (accessed 2026-11-06).
+
+- **Used for:** Cache-Control headers in the sample Caddyfile.
+- **Cited in:** `deploy/Caddyfile`
+
+### [CADDY-MATCHERS]
+
+Caddy. *Request matchers (Caddyfile)*. Caddy documentation. <https://caddyserver.com/docs/caddyfile/matchers> (accessed 2026-11-06).
+
+- **Used for:** Named path matchers (@assets, @notAssets) that select a cache policy in the sample Caddyfile.
+- **Cited in:** `deploy/Caddyfile`
+
+### [GH-ACTIONS-EVENTS]
+
+GitHub. *Events that trigger workflows*. GitHub Docs. <https://docs.github.com/en/actions/reference/workflows-and-actions/events-that-trigger-workflows> (accessed 2026-11-06).
+
+- **Used for:** push, pull_request, workflow_dispatch and the monthly schedule (POSIX cron, UTC) used by the workflows.
+- **Cited in:** `.github/workflows/deploy.yml`, `.github/workflows/links.yml`, `docs/DEPLOY.md`, `plan/PLAN.md`
+
+### [GH-ACTIONS-SECURE-USE]
+
+GitHub. *Secure use reference*. GitHub Docs. <https://docs.github.com/en/actions/reference/security/secure-use> (accessed 2026-11-06).
+
+- **Used for:** Least-privilege GITHUB_TOKEN permissions, set per workflow and per job.
+- **Cited in:** `.github/workflows/deploy.yml`, `.github/workflows/links.yml`
+
+### [GH-ACTIONS-WORKFLOW-SYNTAX]
+
+GitHub. *Workflow syntax for GitHub Actions*. GitHub Docs. <https://docs.github.com/en/actions/reference/workflows-and-actions/workflow-syntax> (accessed 2026-11-06).
+
+- **Used for:** Structure of the CI workflows (jobs, needs, if, permissions, concurrency, defaults.run.working-directory).
+- **Cited in:** `.github/workflows/deploy.yml`, `.github/workflows/links.yml`
+
+### [GH-PAGES-CUSTOM-DOMAIN]
+
+GitHub. *Managing a custom domain for your GitHub Pages site*. GitHub Docs. <https://docs.github.com/en/pages/configuring-a-custom-domain-for-your-github-pages-site/managing-a-custom-domain-for-your-github-pages-site> (accessed 2026-11-16).
+
+- **Used for:** Subdomain setup for capstep.markwolgin.com. Add the domain in Settings -> Pages before creating DNS; a CNAME record to wolginm.github.io (not *.pages.github.io); no CNAME file needed when deploying with a custom Actions workflow; avoid wildcard DNS records.
+- **Cited in:** `.github/workflows/deploy.yml`, `README.md`, `docs/DEPLOY.md`, `plan/PLAN.md`
+
+### [GH-PAGES-CUSTOM-WORKFLOW]
+
+GitHub. *Using custom workflows with GitHub Pages*. GitHub Docs. <https://docs.github.com/en/pages/getting-started-with-github-pages/using-custom-workflows-with-github-pages> (accessed 2026-11-06).
+
+- **Used for:** Build-then-deploy job pair, the github-pages environment (with the recommended main-only deployment branch rule) and the pages/id-token permissions.
+- **Cited in:** `.github/workflows/deploy.yml`, `README.md`, `docs/DEPLOY.md`, `plan/PLAN.md`
+
+### [GH-PAGES-DOMAIN-TROUBLESHOOTING]
+
+GitHub. *Troubleshooting custom domains and GitHub Pages*. GitHub Docs. <https://docs.github.com/en/pages/configuring-a-custom-domain-for-your-github-pages-site/troubleshooting-custom-domains-and-github-pages> (accessed 2026-11-16).
+
+- **Used for:** HTTPS can take up to an hour after the domain is configured; if CAA records exist, one must allow letsencrypt.org.
+- **Cited in:** `docs/DEPLOY.md`, `plan/PLAN.md`
+
+### [GH-PAGES-HTTPS]
+
+GitHub. *Securing your GitHub Pages site with HTTPS*. GitHub Docs. <https://docs.github.com/en/pages/getting-started-with-github-pages/securing-your-github-pages-site-with-https> (accessed 2026-11-16).
+
+- **Used for:** The "Enforce HTTPS" setting for a custom domain, and how to restart certificate provisioning.
+- **Cited in:** `docs/DEPLOY.md`, `plan/PLAN.md`
+
+### [GH-PAGES-PUBLISHING-SOURCE]
+
+GitHub. *Configuring a publishing source for your GitHub Pages site*. GitHub Docs. <https://docs.github.com/en/pages/getting-started-with-github-pages/configuring-a-publishing-source-for-your-github-pages-site> (accessed 2026-11-06).
+
+- **Used for:** One-time repository setting, Pages source = "GitHub Actions", documented in docs/DEPLOY.md.
+- **Cited in:** `docs/DEPLOY.md`
+
+### [GH-PAGES-VERIFY-DOMAIN]
+
+GitHub. *Verifying your custom domain for GitHub Pages*. GitHub Docs. <https://docs.github.com/en/pages/configuring-a-custom-domain-for-your-github-pages-site/verifying-your-custom-domain-for-github-pages> (accessed 2026-11-16).
+
+- **Used for:** Account-level domain verification with a _github-pages-challenge-wolginm TXT record, which prevents domain takeover. Verifying markwolgin.com also covers its immediate subdomains.
+- **Cited in:** `docs/DEPLOY.md`, `plan/PLAN.md`
+
+### [GHA-CHECKOUT]
+
+GitHub. *actions/checkout*. GitHub. <https://github.com/actions/checkout> (accessed 2026-11-06).
+
+- **Used for:** Checks out the repository in CI (v7, the current major release at the time of writing).
+- **Cited in:** `.github/workflows/deploy.yml`, `.github/workflows/links.yml`
+
+### [GHA-DEPLOY-PAGES]
+
+GitHub. *actions/deploy-pages*. GitHub. <https://github.com/actions/deploy-pages> (accessed 2026-11-06).
+
+- **Used for:** Publishes the Pages artifact and reports the page_url output (v5).
+- **Cited in:** `.github/workflows/deploy.yml`
+
+### [GHA-SETUP-NODE]
+
+GitHub. *actions/setup-node*. GitHub. <https://github.com/actions/setup-node> (accessed 2026-11-06).
+
+- **Used for:** Installs the Node version in .nvmrc (node-version-file) and caches npm (v7).
+- **Cited in:** `.github/workflows/deploy.yml`
+
+### [GHA-SETUP-UV]
+
+Astral. *astral-sh/setup-uv*. GitHub. <https://github.com/astral-sh/setup-uv> (accessed 2026-11-06).
+
+- **Used for:** Installs uv and a Python 3.12 interpreter in CI (v7).
+- **Cited in:** `.github/workflows/deploy.yml`, `.github/workflows/links.yml`
+
+### [GHA-UPLOAD-PAGES-ARTIFACT]
+
+GitHub. *actions/upload-pages-artifact*. GitHub. <https://github.com/actions/upload-pages-artifact> (accessed 2026-11-06).
+
+- **Used for:** Packages web/dist/ as the Pages artifact (v5).
+- **Cited in:** `.github/workflows/deploy.yml`
+
 ### [GIT-GITIGNORE]
 
 Git project. *gitignore — Specifies intentionally untracked files to ignore*. git-scm.com. <https://git-scm.com/docs/gitignore> (accessed 2026-10-25).
@@ -45,6 +171,13 @@ MDN contributors. *<audio>: The Embed Audio element*. MDN Web Docs. <https://dev
 - **Used for:** controls, preload="none" (nothing is fetched from the archive until the listener presses play).
 - **Cited in:** `web/e2e/smoke.spec.ts`, `web/src/pages/SongPage.tsx`
 
+### [MDN-CACHE-CONTROL]
+
+MDN contributors. *Cache-Control header*. MDN Web Docs. <https://developer.mozilla.org/en-US/docs/Web/HTTP/Reference/Headers/Cache-Control> (accessed 2026-11-06).
+
+- **Used for:** immutable/max-age for content-hashed assets, no-cache for index.html and data/ so updates show up.
+- **Cited in:** `deploy/Caddyfile`, `deploy/nginx.conf`, `docs/DEPLOY.md`
+
 ### [MDN-ENCODEURICOMPONENT]
 
 MDN contributors. *encodeURIComponent()*. MDN Web Docs. <https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/encodeURIComponent> (accessed 2026-10-26).
@@ -77,6 +210,27 @@ Microsoft. *TSDoc*. tsdoc.org. <https://tsdoc.org/> (accessed 2026-10-25).
 - **Used for:** Comment convention for TypeScript code in web/.
 - **Cited in:** `README.md`, `web/scripts/lint-citations.ts`
 
+### [NGINX-CORE]
+
+NGINX. *Module ngx_http_core_module*. nginx.org. <https://nginx.org/en/docs/http/ngx_http_core_module.html> (accessed 2026-11-06).
+
+- **Used for:** server, root, location, try_files and default_type in the sample nginx config.
+- **Cited in:** `deploy/nginx.conf`, `docs/DEPLOY.md`
+
+### [NGINX-GZIP]
+
+NGINX. *Module ngx_http_gzip_module*. nginx.org. <https://nginx.org/en/docs/http/ngx_http_gzip_module.html> (accessed 2026-11-06).
+
+- **Used for:** gzip compression of the catalog JSON and assets in the sample nginx config.
+- **Cited in:** `deploy/nginx.conf`
+
+### [NGINX-HEADERS]
+
+NGINX. *Module ngx_http_headers_module*. nginx.org. <https://nginx.org/en/docs/http/ngx_http_headers_module.html> (accessed 2026-11-06).
+
+- **Used for:** add_header for Cache-Control in the sample nginx config (a location-level add_header replaces server-level ones).
+- **Cited in:** `deploy/nginx.conf`
+
 ### [NODE-FS]
 
 OpenJS Foundation. *Node.js – File system (fs/promises)*. nodejs.org. <https://nodejs.org/api/fs.html> (accessed 2026-10-26).
@@ -89,6 +243,13 @@ OpenJS Foundation. *Node.js – Modules: TypeScript (type stripping)*. nodejs.or
 
 - **Used for:** Runs web/scripts/sync-data.ts directly on Node 24.
 - **Cited in:** `web/scripts/lint-citations.ts`, `web/scripts/sync-data.ts`
+
+### [NPM-CI]
+
+npm, Inc.. *npm ci*. npm Docs. <https://docs.npmjs.com/cli/v11/commands/npm-ci> (accessed 2026-11-06).
+
+- **Used for:** Clean, lockfile-exact install of web dependencies in CI.
+- **Cited in:** `.github/workflows/deploy.yml`
 
 ### [NVM-SH]
 
@@ -103,6 +264,13 @@ Oxc contributors. *Oxlint – Usage*. oxc.rs. <https://oxc.rs/docs/guide/usage/l
 
 - **Used for:** Linter shipped with the Vite 8 react-ts template.
 - **Cited in:** _not yet cited_
+
+### [PLAYWRIGHT-CI]
+
+Microsoft. *Continuous Integration*. Playwright documentation. <https://playwright.dev/docs/ci> (accessed 2026-11-06).
+
+- **Used for:** Installing a browser with its system dependencies (playwright install --with-deps chromium) on GitHub Actions.
+- **Cited in:** `.github/workflows/deploy.yml`
 
 ### [PLAYWRIGHT-CONFIG]
 
@@ -265,7 +433,7 @@ Titus Wormer and contributors (unified collective). *react-markdown*. GitHub. <h
 Remix Software / Shopify. *<HashRouter> – React Router API Reference (v8.5.0)*. reactrouter.com. <https://reactrouter.com/api/declarative-routers/HashRouter> (accessed 2026-10-26).
 
 - **Used for:** "Stores the location in the hash portion of the URL so it is not sent to the server"; chosen so deep links work on GitHub Pages and any static host without rewrite rules.
-- **Cited in:** `README.md`, `web/src/components/Layout.tsx`, `web/src/main.tsx`
+- **Cited in:** `README.md`, `deploy/Caddyfile`, `deploy/nginx.conf`, `docs/DEPLOY.md`, `web/src/components/Layout.tsx`, `web/src/main.tsx`
 
 ### [REACT-ROUTER-ROUTING]
 
@@ -334,6 +502,13 @@ Astral. *uv documentation*. docs.astral.sh. <https://docs.astral.sh/uv/> (access
 - **Used for:** Python project and dependency management for ingest/.
 - **Cited in:** `ingest/pyproject.toml`
 
+### [UV-GITHUB-ACTIONS]
+
+Astral. *Using uv in GitHub Actions*. uv documentation. <https://docs.astral.sh/uv/guides/integration/github/> (accessed 2026-11-06).
+
+- **Used for:** Recommended setup-uv usage, python-version input and uv run --locked in CI.
+- **Cited in:** `.github/workflows/deploy.yml`, `.github/workflows/links.yml`
+
 ### [VITE-ASSETS]
 
 Vite contributors. *Static Asset Handling – the public directory*. vite.dev. <https://vite.dev/guide/assets.html> (accessed 2026-10-26).
@@ -359,7 +534,7 @@ Vite contributors. *Env Variables and Modes (import.meta.env.BASE_URL)*. vite.de
 Vite contributors. *Deploying a Static Site*. vite.dev. <https://vite.dev/guide/static-deploy.html> (accessed 2026-10-26).
 
 - **Used for:** GitHub Pages and generic static hosting of web/dist.
-- **Cited in:** `README.md`, `web/index.html`, `web/vite.config.ts`
+- **Cited in:** `README.md`, `deploy/Caddyfile`, `deploy/nginx.conf`, `docs/DEPLOY.md`, `web/index.html`, `web/vite.config.ts`
 
 ### [VITEST-CONFIG]
 

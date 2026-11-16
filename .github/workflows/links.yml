@@ -1,0 +1,52 @@
+# Monthly link check: do the archived recordings and cited sources still resolve?
+#
+# Runs tools/check_links.py with its defaults: 20 recordings, sampled with a new
+# random seed each run (printed in the log, so a failure can be re-run exactly with
+# --seed), plus every reference URL. Requests are sequential, one per second. A failed
+# run triggers GitHub's normal failure notification; nothing is filed automatically.
+# Monthly by developer decision (2026-11-06): the archived captures are not expected
+# to change. It can also be started by hand from the Actions tab.
+#
+# Note: GitHub disables scheduled workflows in public repositories after 60 days
+# without repository activity [GH-ACTIONS-EVENTS]. Re-enable it from the Actions tab
+# if that happens (see docs/DEPLOY.md).
+#
+# References:
+#   [GH-ACTIONS-WORKFLOW-SYNTAX] https://docs.github.com/en/actions/reference/workflows-and-actions/workflow-syntax
+#   [GH-ACTIONS-EVENTS] schedule (POSIX cron, UTC) and workflow_dispatch,
+#       https://docs.github.com/en/actions/reference/workflows-and-actions/events-that-trigger-workflows
+#   [GH-ACTIONS-SECURE-USE] read-only GITHUB_TOKEN,
+#       https://docs.github.com/en/actions/reference/security/secure-use
+#   [GHA-CHECKOUT] https://github.com/actions/checkout
+#   [GHA-SETUP-UV] https://github.com/astral-sh/setup-uv
+#   [UV-GITHUB-ACTIONS] https://docs.astral.sh/uv/guides/integration/github/
+
+name: Monthly link check
+
+on:
+  schedule:
+    # 14:17 UTC on the 1st of each month (off the hour, when GitHub's scheduler is busiest).
+    - cron: "17 14 1 * *"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ${{ github.workflow }}
+  cancel-in-progress: false
+
+jobs:
+  check-links:
+    name: Check links
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v7
+
+      - uses: astral-sh/setup-uv@v7
+        with:
+          python-version: "3.12"
+
+      - name: Check 20 sampled recordings and every reference URL
+        run: uv run --no-project --with pyyaml python tools/check_links.py

@@ -114,3 +114,27 @@ is updated at the end of every phase.
   reference). Caught its own mistake in testing: the lint at first took the word
   "References:" written in prose for a real section, so one docstring passed by accident.
   24 tool tests and 49 web tests pass.
+
+### Phase 5 — Deployment (2026-11-06)
+- **Human:** committed Phase 4 and approved the Phase 5 plan. Decided the link check runs
+  monthly rather than on every push, since the archived captures are not expected to
+  change. Creates the GitHub repository, pushes, and turns on Pages; the agent does not.
+- **LLM:** wrote the GitHub Actions workflows. One runs every lint and test, builds the
+  site and deploys `main` to GitHub Pages. The other runs the link checker monthly. Also
+  wrote a self-hosting guide with sample nginx and Caddy configs, and added 21 cited
+  sources, checking that each URL resolves. Checked the current version of each action
+  rather than relying on memory. Caught its own mistake while checking against GitHub's
+  documentation: it had claimed that GitHub limits Pages deployments to `main` by
+  itself, which GitHub only recommends. The guide now says to add that rule. Could not
+  run nginx, Caddy or a workflow linter in its sandbox, so those configs were checked by
+  reading and by YAML parsing only. The real test is the first run on GitHub.
+
+### Phase 5 addendum — Custom domain (2026-11-16)
+- **Human:** created the GitHub repository `wolginm/capstep.markwolgin.com` and chose the
+  domain `capstep.markwolgin.com`. Owns the DNS and the GitHub settings.
+- **LLM:** checked GitHub's current custom-domain, domain-verification and HTTPS
+  documentation, and wrote the setup steps in the order GitHub recommends: add the domain
+  before creating the DNS record. Found that no code change and no `CNAME` file is needed
+  for an Actions-deployed site. Removed one claim it could not source, that the old
+  `github.io` address redirects to the custom domain. Checked that the site loads nothing
+  over plain `http://`, so enforcing HTTPS will not cause mixed-content warnings.
